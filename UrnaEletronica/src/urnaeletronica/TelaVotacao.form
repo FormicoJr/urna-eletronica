@@ -501,7 +501,7 @@
                                   </Group>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="LBL_FOTO" min="-2" pref="116" max="-2" attributes="0"/>
+                              <Component id="LBL_FOTO" min="-2" pref="110" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
@@ -557,7 +557,7 @@
                                           </Group>
                                       </Group>
                                   </Group>
-                                  <Component id="LBL_FOTO" alignment="1" min="-2" pref="164" max="-2" attributes="0"/>
+                                  <Component id="LBL_FOTO" alignment="1" min="-2" pref="110" max="-2" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="LBL_FOTOVICE" min="-2" pref="123" max="-2" attributes="0"/>
@@ -610,6 +610,17 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
+            <Component class="javax.swing.JLabel" name="LBL_FOTO">
+              <Properties>
+                <Property name="horizontalAlignment" type="int" value="11"/>
+                <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[110, 110]"/>
+                </Property>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[110, 110]"/>
+                </Property>
+              </Properties>
+            </Component>
             <Component class="javax.swing.JLabel" name="LBL_SEUVOTO">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -625,8 +636,6 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="DEPUTADO ESTADUAL (a)"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="LBL_FOTO">
             </Component>
             <Component class="javax.swing.JLabel" name="LBL_NUMERO">
               <Properties>

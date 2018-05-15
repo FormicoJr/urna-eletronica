@@ -5,6 +5,8 @@
  */
 package urnaeletronica;
 
+import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
@@ -15,6 +17,12 @@ import javax.swing.text.PlainDocument;
  */
 public class TelaVotacao extends javax.swing.JFrame {
 
+    public void ImagemEleitor(){
+        File img = new File("C:\\Users\\Mauricio\\Pictures\\Urna\\UP.png");
+        ImageIcon Eleitor = new ImageIcon(img.getPath());
+        LBL_FOTO.setIcon(Eleitor);
+        
+    }
     /**
      * Creates new form TelaInicializacao
      */
@@ -56,9 +64,9 @@ public class TelaVotacao extends javax.swing.JFrame {
         BTN_CORRIGE = new javax.swing.JButton();
         BTN_CONFIRMA = new javax.swing.JButton();
         PNL_TELA = new javax.swing.JPanel();
+        LBL_FOTO = new javax.swing.JLabel();
         LBL_SEUVOTO = new javax.swing.JLabel();
         LBL_CARGO = new javax.swing.JLabel();
-        LBL_FOTO = new javax.swing.JLabel();
         LBL_NUMERO = new javax.swing.JLabel();
         TXT_NUM1 = new javax.swing.JTextField();
         TXT_NUM2 = new javax.swing.JTextField();
@@ -318,6 +326,10 @@ public class TelaVotacao extends javax.swing.JFrame {
 
         PNL_TELA.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
 
+        LBL_FOTO.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
+        LBL_FOTO.setMaximumSize(new java.awt.Dimension(110, 110));
+        LBL_FOTO.setMinimumSize(new java.awt.Dimension(110, 110));
+
         LBL_SEUVOTO.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         LBL_SEUVOTO.setText("SEU VOTO PARA");
 
@@ -429,7 +441,7 @@ public class TelaVotacao extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(TXT_NUM5, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LBL_FOTO, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(LBL_FOTO, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(127, 127, 127))
                     .addGroup(PNL_TELALayout.createSequentialGroup()
                         .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -473,7 +485,7 @@ public class TelaVotacao extends javax.swing.JFrame {
                                         .addComponent(TXT_NUM3, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(TXT_NUM4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addComponent(TXT_NUM5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(LBL_FOTO, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(LBL_FOTO, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(LBL_FOTOVICE, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(PNL_TELALayout.createSequentialGroup()
@@ -550,7 +562,10 @@ public class TelaVotacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTN_CONFIRMAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CONFIRMAActionPerformed
+        ImagemEleitor();
         TXT_NUM5.setVisible(false);
+        
+        
         //LBL_FOTO.setIcon(new javax.swing.ImageIcon(getClass().getResource("michel temer.png")));
     }//GEN-LAST:event_BTN_CONFIRMAActionPerformed
 
