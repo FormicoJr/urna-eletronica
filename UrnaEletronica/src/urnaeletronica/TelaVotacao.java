@@ -7,6 +7,7 @@ package urnaeletronica;
 
 import java.io.File;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
@@ -16,7 +17,9 @@ import javax.swing.text.PlainDocument;
  * @author MARCELO
  */
 public class TelaVotacao extends javax.swing.JFrame {
-
+    
+    String nCandidato;
+    
     public void ImagemEleitor(){
         File img = new File("C:\\Users\\Mauricio\\Pictures\\Urna\\UP.png");
         ImageIcon Eleitor = new ImageIcon(img.getPath());
@@ -258,7 +261,7 @@ public class TelaVotacao extends javax.swing.JFrame {
                                     .addComponent(BTN_1, javax.swing.GroupLayout.DEFAULT_SIZE, 65, Short.MAX_VALUE)
                                     .addComponent(BTN_4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(BTN_7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                                 .addGroup(PNL_DIGITOSLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(BTN_2, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(BTN_5, javax.swing.GroupLayout.PREFERRED_SIZE, 65, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -277,7 +280,7 @@ public class TelaVotacao extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(BTN_BRANCO)
                 .addGap(18, 18, 18)
-                .addComponent(BTN_CORRIGE, javax.swing.GroupLayout.DEFAULT_SIZE, 92, Short.MAX_VALUE)
+                .addComponent(BTN_CORRIGE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(BTN_CONFIRMA)
                 .addContainerGap())
@@ -572,19 +575,43 @@ public class TelaVotacao extends javax.swing.JFrame {
         
         if(LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")){
             LBL_VOTOBRANCONULO.setText(null);
+            TXT_NUM1.setVisible(true);
+            TXT_NUM2.setVisible(true);
+            TXT_NUM3.setVisible(true);
+            TXT_NUM4.setVisible(true);
             TXT_NUM5.setVisible(false);
             LBL_CARGO.setText("DEPUTADO FEDERAL (a)");
         }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")){
             LBL_VOTOBRANCONULO.setText(null);
+            TXT_NUM1.setVisible(true);
+            TXT_NUM2.setVisible(true);
+            TXT_NUM3.setVisible(true);
             TXT_NUM4.setVisible(false);
+            TXT_NUM5.setVisible(false);
             LBL_CARGO.setText("SENADOR (a)");
         }else if(LBL_CARGO.getText().equals("SENADOR (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")){
             LBL_VOTOBRANCONULO.setText(null);
+            TXT_NUM1.setVisible(true);
+            TXT_NUM2.setVisible(true);
             TXT_NUM3.setVisible(false);
+            TXT_NUM4.setVisible(false);
+            TXT_NUM5.setVisible(false);
             LBL_CARGO.setText("GOVERNADOR (a)");
         }else if(LBL_CARGO.getText().equals("GOVERNADOR (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")){
             LBL_VOTOBRANCONULO.setText(null);
+            TXT_NUM1.setVisible(true);
+            TXT_NUM2.setVisible(true);
+            TXT_NUM3.setVisible(false);
+            TXT_NUM4.setVisible(false);
+            TXT_NUM5.setVisible(false);
             LBL_CARGO.setText("PRESIDENTE (a)");
+        }else if(LBL_CARGO.getText().equals("PRESIDENTE (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")){
+            LBL_VOTOBRANCONULO.setText(null);
+            TXT_NUM1.setVisible(true);
+            TXT_NUM2.setVisible(true);
+            TXT_NUM3.setVisible(false);
+            TXT_NUM4.setVisible(false);
+            TXT_NUM5.setVisible(false);
         }
 
         //ImagemEleitor();
@@ -603,6 +630,9 @@ public class TelaVotacao extends javax.swing.JFrame {
                 TXT_NUM4.setText("1");
             }else if(TXT_NUM5.getText().equals("")){
                 TXT_NUM5.setText("1");
+                nCandidato = TXT_NUM1.getText()+TXT_NUM2.getText()+TXT_NUM3.getText()
+                        +TXT_NUM4.getText()+TXT_NUM5.getText();
+                JOptionPane.showMessageDialog(null, nCandidato);
             } 
         }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)")){
             if(TXT_NUM1.getText().equals("")){
@@ -996,7 +1026,48 @@ public class TelaVotacao extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_0ActionPerformed
 
     private void BTN_CORRIGEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CORRIGEActionPerformed
-        if(LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")){
+        LBL_NUMERO.setText("NÚMERO:");
+        TXT_NUM1.setVisible(true);
+        TXT_NUM2.setVisible(true);
+        TXT_NUM3.setVisible(true);
+        TXT_NUM4.setVisible(true);
+        TXT_NUM5.setVisible(true);
+        
+        TXT_NUM1.setText(null);
+        TXT_NUM2.setText(null);
+        TXT_NUM3.setText(null);
+        TXT_NUM4.setText(null);
+        TXT_NUM5.setText(null);
+
+        LBL_NOME.setText(null);
+        LBL_NOMECANDIDATO.setText(null);
+        LBL_NOMECANDIDATO1.setText(null);
+        LBL_PARTIDO.setText(null);
+        LBL_SIGLAPARTIDO.setText(null);
+        LBL_VICE.setText(null);
+        
+        if(LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")){
+            LBL_VOTOBRANCONULO.setText(null);
+        }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")){
+            LBL_VOTOBRANCONULO.setText(null);
+            TXT_NUM5.setVisible(false);
+        }else if(LBL_CARGO.getText().equals("SENADOR (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")){
+            LBL_VOTOBRANCONULO.setText(null);
+            TXT_NUM4.setVisible(false);
+            TXT_NUM5.setVisible(false);
+        }else if(LBL_CARGO.getText().equals("GOVERNADOR (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")){
+            LBL_VOTOBRANCONULO.setText(null);
+            TXT_NUM3.setVisible(false);
+            TXT_NUM4.setVisible(false);
+            TXT_NUM5.setVisible(false);
+        }else if(LBL_CARGO.getText().equals("PRESIDENTE (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")){
+            LBL_VOTOBRANCONULO.setText(null);
+            TXT_NUM3.setVisible(false);
+            TXT_NUM4.setVisible(false);
+            TXT_NUM5.setVisible(false);
+        }
+        
+        /*if(LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")){
             LBL_NUMERO.setText("NÚMERO:");
             TXT_NUM1.setVisible(true);
             TXT_NUM2.setVisible(true);
@@ -1017,7 +1088,7 @@ public class TelaVotacao extends javax.swing.JFrame {
             LBL_PARTIDO.setText(null);
             LBL_SIGLAPARTIDO.setText(null);
             LBL_VICE.setText(null);
-        }
+        }*/
     }//GEN-LAST:event_BTN_CORRIGEActionPerformed
 
     private void BTN_BRANCOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_BRANCOActionPerformed
