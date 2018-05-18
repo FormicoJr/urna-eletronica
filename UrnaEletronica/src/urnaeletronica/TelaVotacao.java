@@ -363,16 +363,12 @@ public class TelaVotacao extends javax.swing.JFrame {
         TXT_NUM5.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
 
         LBL_NOMECANDIDATO.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        LBL_NOMECANDIDATO.setText("LULA");
 
         LBL_SIGLAPARTIDO.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        LBL_SIGLAPARTIDO.setText("PT");
 
         LBL_NOME.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        LBL_NOME.setText("NOME:");
 
         LBL_PARTIDO.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        LBL_PARTIDO.setText("PARTIDO:");
 
         LBL_APERTE.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         LBL_APERTE.setText("Aperte a tecla");
@@ -400,10 +396,8 @@ public class TelaVotacao extends javax.swing.JFrame {
         LBL_PARA2.setText("para");
 
         LBL_VICE.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
-        LBL_VICE.setText("VICE ou SUPLENTE:");
 
         LBL_NOMECANDIDATO1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        LBL_NOMECANDIDATO1.setText("DILMA");
 
         LBL_VOTOBRANCONULO.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
 
@@ -435,6 +429,9 @@ public class TelaVotacao extends javax.swing.JFrame {
                             .addComponent(LBL_APERTE, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 365, Short.MAX_VALUE))
                     .addGroup(PNL_TELALayout.createSequentialGroup()
+                        .addComponent(LBL_SEUVOTO, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(27, 534, Short.MAX_VALUE))
+                    .addGroup(PNL_TELALayout.createSequentialGroup()
                         .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PNL_TELALayout.createSequentialGroup()
                                 .addComponent(LBL_NUMERO)
@@ -460,13 +457,12 @@ public class TelaVotacao extends javax.swing.JFrame {
                                 .addComponent(LBL_VICE, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(LBL_NOMECANDIDATO1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(LBL_CARGO, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LBL_SEUVOTO, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(LBL_CARGO, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(LBL_FOTOVICE, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LBL_FOTO, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(27, 27, 27))))
+                        .addGap(57, 57, 57))))
             .addGroup(PNL_TELALayout.createSequentialGroup()
                 .addGap(40, 40, 40)
                 .addComponent(SPD_CONFIRMACAO, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
