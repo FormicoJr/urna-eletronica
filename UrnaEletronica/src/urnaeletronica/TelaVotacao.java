@@ -6,6 +6,11 @@
 package urnaeletronica;
 
 import java.io.File;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -20,10 +25,10 @@ public class TelaVotacao extends javax.swing.JFrame {
     
     String nCandidato;
     
-    public void ImagemEleitor(){
-        File img = new File("C:\\Users\\Mauricio\\Pictures\\Urna\\UP.png");
-        ImageIcon Eleitor = new ImageIcon(img.getPath());
-        LBL_FOTO.setIcon(Eleitor);
+    public void fotoCandidato (String foto){
+        File img = new File(foto);
+        ImageIcon candidato = new ImageIcon(img.getPath());
+        LBL_FOTO.setIcon(candidato);
         
     }
     /**
@@ -612,10 +617,7 @@ public class TelaVotacao extends javax.swing.JFrame {
             TXT_NUM3.setVisible(false);
             TXT_NUM4.setVisible(false);
             TXT_NUM5.setVisible(false);
-        }
-
-        //ImagemEleitor();
-        //TXT_NUM5.setVisible(false);     
+        }    
     }//GEN-LAST:event_BTN_CONFIRMAActionPerformed
 
     private void BTN_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_1ActionPerformed
@@ -630,9 +632,45 @@ public class TelaVotacao extends javax.swing.JFrame {
                 TXT_NUM4.setText("1");
             }else if(TXT_NUM5.getText().equals("")){
                 TXT_NUM5.setText("1");
+                
                 nCandidato = TXT_NUM1.getText()+TXT_NUM2.getText()+TXT_NUM3.getText()
                         +TXT_NUM4.getText()+TXT_NUM5.getText();
-                JOptionPane.showMessageDialog(null, nCandidato);
+
+                String sql = "select * from deputado_estadual where EST_NUMERO = ?";
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String user = "root";
+                String senha = "shieldcorrupted";
+
+                try{
+                    Connection conexao = DriverManager.getConnection(url, user, senha);
+
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    
+                    comando.setString(1, nCandidato);
+                    ResultSet busca = comando.executeQuery();
+
+                    if(busca.next()==true){
+                        String nomeCand = busca.getString("EST_NOME");
+                        String partido = busca.getString("EST_SIGPARTIDO");
+                        String foto = busca.getString("EST_FOTO");
+                        
+                        LBL_NOME.setText("NOME:");
+                        LBL_PARTIDO.setText("PARTIDO:");
+                        LBL_NOMECANDIDATO.setText(nomeCand);
+                        LBL_SIGLAPARTIDO.setText(partido);
+                        fotoCandidato(foto);
+                    }else{
+                        LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
+                    }
+                    comando.close();
+                    conexao.close();
+
+                }catch(SQLException erro){
+                    erro.printStackTrace();
+                }
+                
             } 
         }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)")){
             if(TXT_NUM1.getText().equals("")){
