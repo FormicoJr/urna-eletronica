@@ -24,6 +24,7 @@ import javax.swing.text.PlainDocument;
 public class TelaVotacao extends javax.swing.JFrame {
     
     String nCandidato;
+    String digito;
     
     public void fotoCandidato (String foto){
         File img = new File(foto);
@@ -31,9 +32,260 @@ public class TelaVotacao extends javax.swing.JFrame {
         LBL_FOTO.setIcon(candidato);
         
     }
-    /**
-     * Creates new form TelaInicializacao
-     */
+    
+    public void fotoVice (String foto){
+        File img = new File(foto);
+        ImageIcon candidato = new ImageIcon(img.getPath());
+        LBL_FOTOVICE.setIcon(candidato);
+        
+    }
+    
+    public void conexaoValidacaoCandidato(String numero){
+        if(LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)")){
+            if(TXT_NUM1.getText().equals("")){
+                TXT_NUM1.setText(numero);
+            }else if(TXT_NUM2.getText().equals("")){
+                TXT_NUM2.setText(numero);
+            }else if(TXT_NUM3.getText().equals("")){
+                TXT_NUM3.setText(numero);
+            }else if(TXT_NUM4.getText().equals("")){
+                TXT_NUM4.setText(numero);
+            }else if(TXT_NUM5.getText().equals("")){
+                TXT_NUM5.setText(numero);
+                
+                nCandidato = TXT_NUM1.getText()+TXT_NUM2.getText()+TXT_NUM3.getText()
+                        +TXT_NUM4.getText()+TXT_NUM5.getText();
+
+                String sql = "select * from deputado_estadual where EST_NUMERO = ?";
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String user = "root";
+                String senha = "shieldcorrupted";
+
+                try{
+                    Connection conexao = DriverManager.getConnection(url, user, senha);
+
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    
+                    comando.setString(1, nCandidato);
+                    ResultSet busca = comando.executeQuery();
+
+                    if(busca.next()==true){
+                        String nomeCand = busca.getString("EST_NOME");
+                        String partido = busca.getString("EST_SIGPARTIDO");
+                        String foto = busca.getString("EST_FOTO");
+                        
+                        LBL_NOME.setText("NOME:");
+                        LBL_PARTIDO.setText("PARTIDO:");
+                        LBL_NOMECANDIDATO.setText(nomeCand);
+                        LBL_SIGLAPARTIDO.setText(partido);
+                        fotoCandidato(foto);
+                    }else{
+                        LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
+                    }
+                    comando.close();
+                    conexao.close();
+
+                }catch(SQLException erro){
+                    erro.printStackTrace();
+                }
+                
+            } 
+        }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)")){
+            if(TXT_NUM1.getText().equals("")){
+                TXT_NUM1.setText(numero);
+            }else if(TXT_NUM2.getText().equals("")){
+                TXT_NUM2.setText(numero);
+            }else if(TXT_NUM3.getText().equals("")){
+                TXT_NUM3.setText(numero);
+            }else if(TXT_NUM4.getText().equals("")){
+                TXT_NUM4.setText(numero);
+                
+                nCandidato = TXT_NUM1.getText()+TXT_NUM2.getText()+TXT_NUM3.getText()
+                        +TXT_NUM4.getText();
+
+                String sql = "select * from deputado_federal where FED_NUMERO = ?";
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String user = "root";
+                String senha = "shieldcorrupted";
+
+                try{
+                    Connection conexao = DriverManager.getConnection(url, user, senha);
+
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    
+                    comando.setString(1, nCandidato);
+                    ResultSet busca = comando.executeQuery();
+
+                    if(busca.next()==true){
+                        String nomeCand = busca.getString("FED_NOME");
+                        String partido = busca.getString("FED_SIGPARTIDO");
+                        String foto = busca.getString("FED_FOTO");
+                        
+                        LBL_NOME.setText("NOME:");
+                        LBL_PARTIDO.setText("PARTIDO:");
+                        LBL_NOMECANDIDATO.setText(nomeCand);
+                        LBL_SIGLAPARTIDO.setText(partido);
+                        fotoCandidato(foto);
+                    }else{
+                        LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
+                    }
+                    comando.close();
+                    conexao.close();
+
+                }catch(SQLException erro){
+                    erro.printStackTrace();
+                }
+            }
+        }else if(LBL_CARGO.getText().equals("SENADOR (a)")){
+            if(TXT_NUM1.getText().equals("")){
+                TXT_NUM1.setText(numero);
+            }else if(TXT_NUM2.getText().equals("")){
+                TXT_NUM2.setText(numero);
+            }else if(TXT_NUM3.getText().equals("")){
+                TXT_NUM3.setText(numero);
+                
+                nCandidato = TXT_NUM1.getText()+TXT_NUM2.getText()+TXT_NUM3.getText();
+
+                String sql = "select * from senador where SEN_NUMERO = ?";
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String user = "root";
+                String senha = "shieldcorrupted";
+
+                try{
+                    Connection conexao = DriverManager.getConnection(url, user, senha);
+
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    
+                    comando.setString(1, nCandidato);
+                    ResultSet busca = comando.executeQuery();
+
+                    if(busca.next()==true){
+                        String nomeCand = busca.getString("SEN_NOME");
+                        String partido = busca.getString("SEN_SIGPARTIDO");
+                        String foto = busca.getString("SEN_FOTO");
+                        
+                        LBL_NOME.setText("NOME:");
+                        LBL_PARTIDO.setText("PARTIDO:");
+                        LBL_NOMECANDIDATO.setText(nomeCand);
+                        LBL_SIGLAPARTIDO.setText(partido);
+                        fotoCandidato(foto);
+                    }else{
+                        LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
+                    }
+                    comando.close();
+                    conexao.close();
+
+                }catch(SQLException erro){
+                    erro.printStackTrace();
+                }
+            }
+        }else if(LBL_CARGO.getText().equals("GOVERNADOR (a)")){
+            if(TXT_NUM1.getText().equals("")){
+                TXT_NUM1.setText(numero);
+            }else if(TXT_NUM2.getText().equals("")){
+                TXT_NUM2.setText(numero);
+                
+                nCandidato = TXT_NUM1.getText()+TXT_NUM2.getText()+TXT_NUM3.getText()
+                        +TXT_NUM4.getText()+TXT_NUM5.getText();
+
+                String sql = "select * from governador where GOV_NUMERO = ?";
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String user = "root";
+                String senha = "shieldcorrupted";
+
+                try{
+                    Connection conexao = DriverManager.getConnection(url, user, senha);
+
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    
+                    comando.setString(1, nCandidato);
+                    ResultSet busca = comando.executeQuery();
+
+                    if(busca.next()==true){
+                        String nomeCand = busca.getString("GOV_NOME");
+                        String partido = busca.getString("GOV_SIGPARTIDO");
+                        String foto = busca.getString("GOV_FOTO");
+                        String vice = busca.getString("GOV_VICE");
+                        String fotovice = busca.getString("GOV_FOTO_VICE");
+                        
+                        LBL_NOME.setText("NOME:");
+                        LBL_PARTIDO.setText("PARTIDO:");
+                        LBL_VICE.setText("VICE:");
+                        LBL_NOMECANDIDATO.setText(nomeCand);
+                        LBL_SIGLAPARTIDO.setText(partido);
+                        LBL_NOMEVICE.setText(vice);
+                        fotoCandidato(foto);
+                        fotoVice(fotovice);
+                    }else{
+                        LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
+                    }
+                    comando.close();
+                    conexao.close();
+
+                }catch(SQLException erro){
+                    erro.printStackTrace();
+                }
+            }
+        }else if(LBL_CARGO.getText().equals("PRESIDENTE (a)")){
+            if(TXT_NUM1.getText().equals("")){
+                TXT_NUM1.setText(numero);
+            }else if(TXT_NUM2.getText().equals("")){
+                TXT_NUM2.setText(numero);
+                
+                nCandidato = TXT_NUM1.getText()+TXT_NUM2.getText()+TXT_NUM3.getText()
+                        +TXT_NUM4.getText()+TXT_NUM5.getText();
+
+                String sql = "select * from presidente where PRE_NUMERO = ?";
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String user = "root";
+                String senha = "shieldcorrupted";
+
+                try{
+                    Connection conexao = DriverManager.getConnection(url, user, senha);
+
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    
+                    comando.setString(1, nCandidato);
+                    ResultSet busca = comando.executeQuery();
+
+                    if(busca.next()==true){
+                        String nomeCand = busca.getString("PRE_NOME");
+                        String partido = busca.getString("PRE_SIGPARTIDO");
+                        String foto = busca.getString("PRE_FOTO");
+                        String vice = busca.getString("PRE_VICE");
+                        String fotovice = busca.getString("PRE_FOTO_VICE");
+                        
+                        LBL_NOME.setText("NOME:");
+                        LBL_PARTIDO.setText("PARTIDO:");
+                        LBL_VICE.setText("VICE:");
+                        LBL_NOMECANDIDATO.setText(nomeCand);
+                        LBL_SIGLAPARTIDO.setText(partido);
+                        LBL_NOMEVICE.setText(vice);
+                        fotoCandidato(foto);
+                        fotoVice(fotovice);
+                    }else{
+                        LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
+                    }
+                    comando.close();
+                    conexao.close();
+
+                }catch(SQLException erro){
+                    erro.printStackTrace();
+                }
+            }
+        }
+    }
+    
     public TelaVotacao() {
         initComponents();
         TXT_NUM1.setEditable(false);
@@ -94,7 +346,7 @@ public class TelaVotacao extends javax.swing.JFrame {
         LBL_PARA2 = new javax.swing.JLabel();
         LBL_FOTOVICE = new javax.swing.JLabel();
         LBL_VICE = new javax.swing.JLabel();
-        LBL_NOMECANDIDATO1 = new javax.swing.JLabel();
+        LBL_NOMEVICE = new javax.swing.JLabel();
         SPD_CONFIRMACAO = new javax.swing.JSeparator();
         LBL_VOTOBRANCONULO = new javax.swing.JLabel();
 
@@ -348,11 +600,6 @@ public class TelaVotacao extends javax.swing.JFrame {
         LBL_NUMERO.setText("NÚMERO:");
 
         TXT_NUM1.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
-        TXT_NUM1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TXT_NUM1ActionPerformed(evt);
-            }
-        });
 
         TXT_NUM2.setFont(new java.awt.Font("Tahoma", 1, 48)); // NOI18N
 
@@ -397,7 +644,7 @@ public class TelaVotacao extends javax.swing.JFrame {
 
         LBL_VICE.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
 
-        LBL_NOMECANDIDATO1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        LBL_NOMEVICE.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
 
         LBL_VOTOBRANCONULO.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
 
@@ -454,11 +701,11 @@ public class TelaVotacao extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(LBL_NOMECANDIDATO, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(PNL_TELALayout.createSequentialGroup()
-                                .addComponent(LBL_VICE, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(LBL_VICE, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(LBL_NOMECANDIDATO1, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(LBL_NOMEVICE, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(LBL_CARGO, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 107, Short.MAX_VALUE)
                         .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(LBL_FOTOVICE, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LBL_FOTO, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -505,7 +752,7 @@ public class TelaVotacao extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LBL_VICE, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LBL_NOMECANDIDATO1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(LBL_NOMEVICE, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(LBL_VOTOBRANCONULO, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -574,42 +821,62 @@ public class TelaVotacao extends javax.swing.JFrame {
         TXT_NUM4.setVisible(true);
         TXT_NUM5.setVisible(true);
         
-        if(LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")){
+        if(LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)") && TXT_NUM5.getText().equals("")){
+            LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
+        }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)") && TXT_NUM4.getText().equals(null)){
+            LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
+        }else if(LBL_CARGO.getText().equals("SENADOR (a)") && TXT_NUM3.getText().equals(null)){
+            LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
+        }else if(LBL_CARGO.getText().equals("GOVERNADOR (a)") && TXT_NUM2.getText().equals(null)){
+            LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
+        }else if(LBL_CARGO.getText().equals("PRESIDENTE (a)") && TXT_NUM2.getText().equals(null)){
+            LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
+        }
+        
+        if(LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)") && 
+                (LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")||LBL_VOTOBRANCONULO.getText().equals("NÚMERO ERRADO"))){
             LBL_VOTOBRANCONULO.setText(null);
-            TXT_NUM1.setVisible(true);
-            TXT_NUM2.setVisible(true);
-            TXT_NUM3.setVisible(true);
-            TXT_NUM4.setVisible(true);
+            TXT_NUM1.setText(null);
+            TXT_NUM2.setText(null);
+            TXT_NUM3.setText(null);
+            TXT_NUM4.setText(null);
+            TXT_NUM5.setText(null);
             TXT_NUM5.setVisible(false);
             LBL_CARGO.setText("DEPUTADO FEDERAL (a)");
-        }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")){
+        }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)") && 
+                (LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")||LBL_VOTOBRANCONULO.getText().equals("NÚMERO ERRADO"))){
             LBL_VOTOBRANCONULO.setText(null);
-            TXT_NUM1.setVisible(true);
-            TXT_NUM2.setVisible(true);
-            TXT_NUM3.setVisible(true);
+            TXT_NUM1.setText(null);
+            TXT_NUM2.setText(null);
+            TXT_NUM3.setText(null);
+            TXT_NUM4.setText(null);
             TXT_NUM4.setVisible(false);
             TXT_NUM5.setVisible(false);
             LBL_CARGO.setText("SENADOR (a)");
-        }else if(LBL_CARGO.getText().equals("SENADOR (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")){
+        }else if(LBL_CARGO.getText().equals("SENADOR (a)") && 
+                (LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")||LBL_VOTOBRANCONULO.getText().equals("NÚMERO ERRADO"))){
             LBL_VOTOBRANCONULO.setText(null);
-            TXT_NUM1.setVisible(true);
-            TXT_NUM2.setVisible(true);
+            TXT_NUM1.setText(null);
+            TXT_NUM2.setText(null);
+            TXT_NUM3.setText(null);
             TXT_NUM3.setVisible(false);
             TXT_NUM4.setVisible(false);
             TXT_NUM5.setVisible(false);
             LBL_CARGO.setText("GOVERNADOR (a)");
-        }else if(LBL_CARGO.getText().equals("GOVERNADOR (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")){
+        }else if(LBL_CARGO.getText().equals("GOVERNADOR (a)") && 
+                (LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")||LBL_VOTOBRANCONULO.getText().equals("NÚMERO ERRADO"))){
             LBL_VOTOBRANCONULO.setText(null);
-            TXT_NUM1.setVisible(true);
-            TXT_NUM2.setVisible(true);
+            TXT_NUM1.setText(null);
+            TXT_NUM2.setText(null);
             TXT_NUM3.setVisible(false);
             TXT_NUM4.setVisible(false);
             TXT_NUM5.setVisible(false);
             LBL_CARGO.setText("PRESIDENTE (a)");
-        }else if(LBL_CARGO.getText().equals("PRESIDENTE (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")){
+        }else if(LBL_CARGO.getText().equals("PRESIDENTE (a)") && 
+                (LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")||LBL_VOTOBRANCONULO.getText().equals("NÚMERO ERRADO"))){
             LBL_VOTOBRANCONULO.setText(null);
-            TXT_NUM1.setVisible(true);
-            TXT_NUM2.setVisible(true);
+            TXT_NUM1.setText(null);
+            TXT_NUM2.setText(null);
             TXT_NUM3.setVisible(false);
             TXT_NUM4.setVisible(false);
             TXT_NUM5.setVisible(false);
@@ -617,450 +884,60 @@ public class TelaVotacao extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_CONFIRMAActionPerformed
 
     private void BTN_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_1ActionPerformed
-        if(LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("1");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("1");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("1");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("1");
-            }else if(TXT_NUM5.getText().equals("")){
-                TXT_NUM5.setText("1");
-                
-                nCandidato = TXT_NUM1.getText()+TXT_NUM2.getText()+TXT_NUM3.getText()
-                        +TXT_NUM4.getText()+TXT_NUM5.getText();
-
-                String sql = "select * from deputado_estadual where EST_NUMERO = ?";
-
-                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
-                String user = "root";
-                String senha = "shieldcorrupted";
-
-                try{
-                    Connection conexao = DriverManager.getConnection(url, user, senha);
-
-                    PreparedStatement comando = conexao.prepareStatement(sql);
-
-                    
-                    comando.setString(1, nCandidato);
-                    ResultSet busca = comando.executeQuery();
-
-                    if(busca.next()==true){
-                        String nomeCand = busca.getString("EST_NOME");
-                        String partido = busca.getString("EST_SIGPARTIDO");
-                        String foto = busca.getString("EST_FOTO");
-                        
-                        LBL_NOME.setText("NOME:");
-                        LBL_PARTIDO.setText("PARTIDO:");
-                        LBL_NOMECANDIDATO.setText(nomeCand);
-                        LBL_SIGLAPARTIDO.setText(partido);
-                        fotoCandidato(foto);
-                    }else{
-                        LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
-                    }
-                    comando.close();
-                    conexao.close();
-
-                }catch(SQLException erro){
-                    erro.printStackTrace();
-                }
-                
-            } 
-        }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("1");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("1");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("1");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("1");
-            }
-        }else if(LBL_CARGO.getText().equals("SENADOR (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("1");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("1");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("1");
-            }
-        }else if(LBL_CARGO.getText().equals("GOVERNADOR (a)")||LBL_CARGO.getText().equals("PRESIDENTE (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("1");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("1");
-            }
-        }
+        digito = "1";
+        conexaoValidacaoCandidato(digito);
     }//GEN-LAST:event_BTN_1ActionPerformed
 
-    private void TXT_NUM1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXT_NUM1ActionPerformed
-
-    }//GEN-LAST:event_TXT_NUM1ActionPerformed
-
     private void BTN_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_2ActionPerformed
-         if(LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("2");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("2");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("2");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("2");
-            }else if(TXT_NUM5.getText().equals("")){
-                TXT_NUM5.setText("2");
-            } 
-        }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("2");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("2");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("2");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("2");
-            }
-        }else if(LBL_CARGO.getText().equals("SENADOR (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("2");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("2");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("2");
-            }
-        }else if(LBL_CARGO.getText().equals("GOVERNADOR (a)")||LBL_CARGO.getText().equals("PRESIDENTE (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("2");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("2");
-            }
-        }
+         digito = "2";
+        conexaoValidacaoCandidato(digito);
     }//GEN-LAST:event_BTN_2ActionPerformed
 
     private void BTN_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_3ActionPerformed
-         if(LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("3");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("3");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("3");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("3");
-            }else if(TXT_NUM5.getText().equals("")){
-                TXT_NUM5.setText("3");
-            } 
-        }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("3");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("3");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("3");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("3");
-            }
-        }else if(LBL_CARGO.getText().equals("SENADOR (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("3");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("3");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("3");
-            }
-        }else if(LBL_CARGO.getText().equals("GOVERNADOR (a)")||LBL_CARGO.getText().equals("PRESIDENTE (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("3");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("3");
-            }
-        }
+        digito = "3";
+        conexaoValidacaoCandidato(digito);
     }//GEN-LAST:event_BTN_3ActionPerformed
 
     private void BTN_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_4ActionPerformed
-             if(LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("4");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("4");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("4");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("4");
-            }else if(TXT_NUM5.getText().equals("")){
-                TXT_NUM5.setText("4");
-            } 
-        }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("4");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("4");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("4");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("4");
-            }
-        }else if(LBL_CARGO.getText().equals("SENADOR (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("4");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("4");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("4");
-            }
-        }else if(LBL_CARGO.getText().equals("GOVERNADOR (a)")||LBL_CARGO.getText().equals("PRESIDENTE (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("4");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("4");
-            }
-        }
+        digito = "4";
+        conexaoValidacaoCandidato(digito);
     }//GEN-LAST:event_BTN_4ActionPerformed
 
     private void BTN_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_5ActionPerformed
-         if(LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("5");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("5");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("5");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("5");
-            }else if(TXT_NUM5.getText().equals("")){
-                TXT_NUM5.setText("5");
-            } 
-        }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("5");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("5");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("5");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("5");
-            }
-        }else if(LBL_CARGO.getText().equals("SENADOR (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("5");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("5");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("5");
-            }
-        }else if(LBL_CARGO.getText().equals("GOVERNADOR (a)")||LBL_CARGO.getText().equals("PRESIDENTE (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("5");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("5");
-            }
-        }
+            digito = "5";
+        conexaoValidacaoCandidato(digito);
     }//GEN-LAST:event_BTN_5ActionPerformed
 
     private void BTN_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_6ActionPerformed
-             if(LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("6");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("6");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("6");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("6");
-            }else if(TXT_NUM5.getText().equals("")){
-                TXT_NUM5.setText("6");
-            } 
-        }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("6");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("6");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("6");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("6");
-            }
-        }else if(LBL_CARGO.getText().equals("SENADOR (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("6");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("6");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("6");
-            }
-        }else if(LBL_CARGO.getText().equals("GOVERNADOR (a)")||LBL_CARGO.getText().equals("PRESIDENTE (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("6");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("6");
-            }
-        }
+           digito = "6";
+        conexaoValidacaoCandidato(digito);
     }//GEN-LAST:event_BTN_6ActionPerformed
 
     private void BTN_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_7ActionPerformed
-         if(LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("7");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("7");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("7");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("7");
-            }else if(TXT_NUM5.getText().equals("")){
-                TXT_NUM5.setText("7");
-            } 
-        }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("7");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("7");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("7");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("7");
-            }
-        }else if(LBL_CARGO.getText().equals("SENADOR (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("7");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("7");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("7");
-            }
-        }else if(LBL_CARGO.getText().equals("GOVERNADOR (a)")||LBL_CARGO.getText().equals("PRESIDENTE (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("7");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("7");
-            }
-        }
+         digito = "7";
+        conexaoValidacaoCandidato(digito);
     }//GEN-LAST:event_BTN_7ActionPerformed
 
     private void BTN_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_8ActionPerformed
-         if(LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("8");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("8");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("8");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("8");
-            }else if(TXT_NUM5.getText().equals("")){
-                TXT_NUM5.setText("8");
-            } 
-        }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("8");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("8");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("8");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("8");
-            }
-        }else if(LBL_CARGO.getText().equals("SENADOR (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("8");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("8");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("8");
-            }
-        }else if(LBL_CARGO.getText().equals("GOVERNADOR (a)")||LBL_CARGO.getText().equals("PRESIDENTE (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("8");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("8");
-            }
-        }
+         digito = "8";
+        conexaoValidacaoCandidato(digito);
     }//GEN-LAST:event_BTN_8ActionPerformed
 
     private void BTN_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_9ActionPerformed
-         if(LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("9");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("9");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("9");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("9");
-            }else if(TXT_NUM5.getText().equals("")){
-                TXT_NUM5.setText("9");
-            } 
-        }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("9");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("9");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("9");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("9");
-            }
-        }else if(LBL_CARGO.getText().equals("SENADOR (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("9");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("9");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("9");
-            }
-        }else if(LBL_CARGO.getText().equals("GOVERNADOR (a)")||LBL_CARGO.getText().equals("PRESIDENTE (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("9");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("9");
-            }
-        }
+         digito = "9";
+        conexaoValidacaoCandidato(digito);
     }//GEN-LAST:event_BTN_9ActionPerformed
 
     private void BTN_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_0ActionPerformed
-         if(LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("0");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("0");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("0");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("0");
-            }else if(TXT_NUM5.getText().equals("")){
-                TXT_NUM5.setText("0");
-            } 
-        }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("0");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("0");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("0");
-            }else if(TXT_NUM4.getText().equals("")){
-                TXT_NUM4.setText("0");
-            }
-        }else if(LBL_CARGO.getText().equals("SENADOR (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("0");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("0");
-            }else if(TXT_NUM3.getText().equals("")){
-                TXT_NUM3.setText("0");
-            }
-        }else if(LBL_CARGO.getText().equals("GOVERNADOR (a)")||LBL_CARGO.getText().equals("PRESIDENTE (a)")){
-            if(TXT_NUM1.getText().equals("")){
-                TXT_NUM1.setText("0");
-            }else if(TXT_NUM2.getText().equals("")){
-                TXT_NUM2.setText("0");
-            }
-        }
+         digito = "0";
+        conexaoValidacaoCandidato(digito);
     }//GEN-LAST:event_BTN_0ActionPerformed
 
     private void BTN_CORRIGEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CORRIGEActionPerformed
         LBL_NUMERO.setText("NÚMERO:");
+        LBL_FOTO.setIcon(null);
+        LBL_FOTOVICE.setIcon(null);
+        LBL_VOTOBRANCONULO.setText(null);
         TXT_NUM1.setVisible(true);
         TXT_NUM2.setVisible(true);
         TXT_NUM3.setVisible(true);
@@ -1075,7 +952,7 @@ public class TelaVotacao extends javax.swing.JFrame {
 
         LBL_NOME.setText(null);
         LBL_NOMECANDIDATO.setText(null);
-        LBL_NOMECANDIDATO1.setText(null);
+        LBL_NOMEVICE.setText(null);
         LBL_PARTIDO.setText(null);
         LBL_SIGLAPARTIDO.setText(null);
         LBL_VICE.setText(null);
@@ -1141,7 +1018,7 @@ public class TelaVotacao extends javax.swing.JFrame {
         LBL_NUMERO.setText(null);
         LBL_NOME.setText(null);
         LBL_NOMECANDIDATO.setText(null);
-        LBL_NOMECANDIDATO1.setText(null);
+        LBL_NOMEVICE.setText(null);
         LBL_PARTIDO.setText(null);
         LBL_SIGLAPARTIDO.setText(null);
         LBL_VICE.setText(null);
@@ -1211,7 +1088,7 @@ public class TelaVotacao extends javax.swing.JFrame {
     private javax.swing.JLabel LBL_LARANJA;
     private javax.swing.JLabel LBL_NOME;
     private javax.swing.JLabel LBL_NOMECANDIDATO;
-    private javax.swing.JLabel LBL_NOMECANDIDATO1;
+    private javax.swing.JLabel LBL_NOMEVICE;
     private javax.swing.JLabel LBL_NUMERO;
     private javax.swing.JLabel LBL_PARA1;
     private javax.swing.JLabel LBL_PARA2;
