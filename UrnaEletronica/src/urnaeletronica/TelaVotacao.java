@@ -393,6 +393,7 @@ public class TelaVotacao extends javax.swing.JFrame {
         LBL_NOMEVICE = new javax.swing.JLabel();
         SPD_CONFIRMACAO = new javax.swing.JSeparator();
         LBL_VOTOBRANCONULO = new javax.swing.JLabel();
+        LBL_AVISONUMERO = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -692,6 +693,8 @@ public class TelaVotacao extends javax.swing.JFrame {
 
         LBL_VOTOBRANCONULO.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
 
+        LBL_AVISONUMERO.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+
         javax.swing.GroupLayout PNL_TELALayout = new javax.swing.GroupLayout(PNL_TELA);
         PNL_TELA.setLayout(PNL_TELALayout);
         PNL_TELALayout.setHorizontalGroup(
@@ -725,18 +728,6 @@ public class TelaVotacao extends javax.swing.JFrame {
                     .addGroup(PNL_TELALayout.createSequentialGroup()
                         .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(PNL_TELALayout.createSequentialGroup()
-                                .addComponent(LBL_NUMERO)
-                                .addGap(18, 18, 18)
-                                .addComponent(TXT_NUM1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TXT_NUM2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TXT_NUM3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TXT_NUM4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(TXT_NUM5, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(PNL_TELALayout.createSequentialGroup()
                                 .addComponent(LBL_PARTIDO, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(LBL_SIGLAPARTIDO, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -748,21 +739,38 @@ public class TelaVotacao extends javax.swing.JFrame {
                                 .addComponent(LBL_VICE, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(LBL_NOMEVICE, javax.swing.GroupLayout.PREFERRED_SIZE, 281, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(LBL_CARGO, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(LBL_CARGO, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PNL_TELALayout.createSequentialGroup()
+                                .addComponent(LBL_NUMERO)
+                                .addGap(18, 18, 18)
+                                .addComponent(TXT_NUM1, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TXT_NUM2, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TXT_NUM3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TXT_NUM4, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(TXT_NUM5, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(LBL_FOTO, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LBL_FOTOVICE, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(95, 95, 95))))
             .addGroup(PNL_TELALayout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(SPD_CONFIRMACAO, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PNL_TELALayout.createSequentialGroup()
+                        .addGap(40, 40, 40)
+                        .addComponent(SPD_CONFIRMACAO, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(PNL_TELALayout.createSequentialGroup()
+                        .addGap(161, 161, 161)
+                        .addComponent(LBL_AVISONUMERO, javax.swing.GroupLayout.PREFERRED_SIZE, 282, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PNL_TELALayout.setVerticalGroup(
             PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PNL_TELALayout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(LBL_SEUVOTO)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -778,7 +786,9 @@ public class TelaVotacao extends javax.swing.JFrame {
                                 .addComponent(TXT_NUM4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(TXT_NUM5, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addComponent(LBL_FOTO, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(35, 35, 35)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(LBL_AVISONUMERO, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PNL_TELALayout.createSequentialGroup()
                         .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -828,7 +838,7 @@ public class TelaVotacao extends javax.swing.JFrame {
         PNL_TOTALLayout.setVerticalGroup(
             PNL_TOTALLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PNL_TOTALLayout.createSequentialGroup()
-                .addContainerGap(21, Short.MAX_VALUE)
+                .addContainerGap(35, Short.MAX_VALUE)
                 .addGroup(PNL_TOTALLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PNL_TOTALLayout.createSequentialGroup()
                         .addComponent(PNL_TELA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -883,13 +893,6 @@ public class TelaVotacao extends javax.swing.JFrame {
             } catch (SQLException erro) {
                 erro.printStackTrace();
             }
-            /*if(LBL_VOTOBRANCONULO.getText().equals("NÚMERO ERRADO")){
-                LBL_CARGO.setText("DEPUTADO FEDERAL (a)");
-                limpaTxtCandidato();
-                limpaTela();
-                txtCandidatoVisible(LBL_CARGO.getText());
-                LBL_VOTOBRANCONULO.setText("");
-            }*/
         } else if (LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)") && LBL_VOTOBRANCONULO.getText().equals("")) {
             nCandidato = TXT_NUM1.getText() + TXT_NUM2.getText() + TXT_NUM3.getText()
                     + TXT_NUM4.getText();
@@ -917,17 +920,7 @@ public class TelaVotacao extends javax.swing.JFrame {
                 limpaTela();
                 txtCandidatoVisible(LBL_CARGO.getText());
             } catch (SQLException erro) {
-                txtCandidatoVisible(LBL_CARGO.getText());
-                limpaTela();
-                LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
                 erro.printStackTrace();
-            }
-            if (LBL_VOTOBRANCONULO.getText().equals("NÚMERO ERRADO")) {
-                LBL_CARGO.setText("SENADOR (a)");
-                limpaTxtCandidato();
-                limpaTela();
-                txtCandidatoVisible(LBL_CARGO.getText());
-                LBL_VOTOBRANCONULO.setText("");
             }
         } else if (LBL_CARGO.getText().equals("SENADOR (a)") && LBL_VOTOBRANCONULO.getText().equals("")) {
             nCandidato = TXT_NUM1.getText() + TXT_NUM2.getText() + TXT_NUM3.getText();
@@ -955,19 +948,8 @@ public class TelaVotacao extends javax.swing.JFrame {
                 limpaTela();
                 txtCandidatoVisible(LBL_CARGO.getText());
             } catch (SQLException erro) {
-                txtCandidatoVisible(LBL_CARGO.getText());
-                limpaTela();
-                LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
                 erro.printStackTrace();
             }
-            if (LBL_VOTOBRANCONULO.getText().equals("NÚMERO ERRADO")) {
-                LBL_CARGO.setText("GOVERNADOR (a)");
-                limpaTxtCandidato();
-                limpaTela();
-                txtCandidatoVisible(LBL_CARGO.getText());
-                LBL_VOTOBRANCONULO.setText("");
-            }
-
         } else if (LBL_CARGO.getText().equals("GOVERNADOR (a)") && LBL_VOTOBRANCONULO.getText().equals("")) {
             nCandidato = TXT_NUM1.getText() + TXT_NUM2.getText();
             numCand = Integer.parseInt(nCandidato);
@@ -994,17 +976,7 @@ public class TelaVotacao extends javax.swing.JFrame {
                 limpaTela();
                 txtCandidatoVisible(LBL_CARGO.getText());
             } catch (SQLException erro) {
-                txtCandidatoVisible(LBL_CARGO.getText());
-                limpaTela();
-                LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
                 erro.printStackTrace();
-            }
-            if (LBL_VOTOBRANCONULO.getText().equals("NÚMERO ERRADO")) {
-                LBL_CARGO.setText("GOVERNADOR (a)");
-                limpaTxtCandidato();
-                limpaTela();
-                txtCandidatoVisible(LBL_CARGO.getText());
-                LBL_VOTOBRANCONULO.setText("");
             }
         } else if (LBL_CARGO.getText().equals("PRESIDENTE (a)") && LBL_VOTOBRANCONULO.getText().equals("")) {
             nCandidato = TXT_NUM1.getText() + TXT_NUM2.getText();
@@ -1035,21 +1007,16 @@ public class TelaVotacao extends javax.swing.JFrame {
                 tela.show();
                 dispose();
             } catch (SQLException erro) {
-                txtCandidatoVisible(LBL_CARGO.getText());
-                limpaTela();
-                LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
-                erro.printStackTrace();
-            }
-            if (LBL_VOTOBRANCONULO.getText().equals("NÚMERO ERRADO")) {
                 Fim tela = new Fim();
                 tela.setLocationRelativeTo(null);
                 tela.show();
                 dispose();
+                erro.printStackTrace();
             }
         }
 
-        //CONDIÇÕES PARA VOTO NULO
-        if (LBL_VOTOBRANCONULO.getText().equals("NÚMERO ERRADO")||LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")) {
+        //CONDIÇÕES PARA VOTO NULO OU EM BRANCO
+        if (LBL_VOTOBRANCONULO.getText().equals("NÚMERO ERRADO") || LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")) {
             if (LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)")) {
                 LBL_NUMERO.setText("NÚMERO:");
                 LBL_VOTOBRANCONULO.setText("");
@@ -1085,28 +1052,17 @@ public class TelaVotacao extends javax.swing.JFrame {
                 dispose();
             }
 
-        //CONDIÇÕES PARA VOTO EM BRANCO
-        /*if (LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")) {
-                LBL_CARGO.setText("DEPUTADO FEDERAL (a)");
-                LBL_NUMERO.setText("NÚMERO:");
-                txtCandidatoVisible(LBL_CARGO.getText());
-                LBL_VOTOBRANCONULO.setText("");
-            } else if (LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")) {
-                LBL_CARGO.setText("SENADOR (a)");
-                LBL_NUMERO.setText("NÚMERO:");
-                txtCandidatoVisible(LBL_CARGO.getText());
-                LBL_VOTOBRANCONULO.setText("");
-            } else if (LBL_CARGO.getText().equals("SENADOR (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")) {
-                LBL_CARGO.setText("GOVERNADOR (a)");
-                LBL_NUMERO.setText("NÚMERO:");
-                txtCandidatoVisible(LBL_CARGO.getText());
-                LBL_VOTOBRANCONULO.setText("");
-            } else if (LBL_CARGO.getText().equals("GOVERNADOR (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")) {
-                LBL_CARGO.setText("PRESIDENTE (a)");
-                LBL_NUMERO.setText("NÚMERO:");
-                txtCandidatoVisible(LBL_CARGO.getText());
-                LBL_VOTOBRANCONULO.setText("");
-            }*/
+            if (LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)") && TXT_NUM5.getText().equals("")) {
+                LBL_AVISONUMERO.setText("DIGITE O NÚMERO COMPLETO DO SEU CANDIDATO");
+            }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)") && TXT_NUM4.getText().equals("")) {
+                LBL_AVISONUMERO.setText("DIGITE O NÚMERO COMPLETO DO SEU CANDIDATO");
+            }else if(LBL_CARGO.getText().equals("SENADOR (a)") && TXT_NUM3.getText().equals("")) {
+                LBL_AVISONUMERO.setText("DIGITE O NÚMERO COMPLETO DO SEU CANDIDATO");
+            }else if(LBL_CARGO.getText().equals("GOVERNADOR (a)") && TXT_NUM2.getText().equals("")) {
+                LBL_AVISONUMERO.setText("DIGITE O NÚMERO COMPLETO DO SEU CANDIDATO");
+            }else if(LBL_CARGO.getText().equals("PRESIDENTE (a)") && TXT_NUM2.getText().equals("")) {
+                LBL_AVISONUMERO.setText("DIGITE O NÚMERO COMPLETO DO SEU CANDIDATO");
+            }
         }
     }//GEN-LAST:event_BTN_CONFIRMAActionPerformed
 
@@ -1294,6 +1250,7 @@ public class TelaVotacao extends javax.swing.JFrame {
     private javax.swing.JButton BTN_CONFIRMA;
     private javax.swing.JButton BTN_CORRIGE;
     private javax.swing.JLabel LBL_APERTE;
+    private javax.swing.JLabel LBL_AVISONUMERO;
     private javax.swing.JLabel LBL_BRASAO;
     private javax.swing.JLabel LBL_CARGO;
     private javax.swing.JLabel LBL_CONFIRMAR;
