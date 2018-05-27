@@ -85,7 +85,7 @@ public class Fim extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTN_ENCERRARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ENCERRARActionPerformed
-        
+            
     }//GEN-LAST:event_BTN_ENCERRARActionPerformed
 
     /**
