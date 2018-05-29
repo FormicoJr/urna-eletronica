@@ -19,12 +19,14 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author MARCELO
  */
-public class CadastroDeputadoFederal extends javax.swing.JFrame {
+public class CadastroPresidente extends javax.swing.JFrame {
 
     int numero = 0;
     String nome = "";
     String partido = "";
     String urlFoto = "";
+    String vice = "";
+    String urlFotoVice = "";
 
     public void fotoCandidato(String foto) {
         File img = new File(foto);
@@ -33,7 +35,7 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
 
     }
     
-    public CadastroDeputadoFederal() {
+    public CadastroPresidente() {
         initComponents();
     }
 
@@ -46,6 +48,7 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        BTN_VOLTAR_MENU = new javax.swing.JButton();
         PNL_TELA = new javax.swing.JPanel();
         LBL_NUMERO = new javax.swing.JLabel();
         LBL_NOME = new javax.swing.JLabel();
@@ -56,8 +59,6 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
         LBL_URL_FOTO = new javax.swing.JLabel();
         TXT_URL_FOTO = new javax.swing.JTextField();
         LBL_FOTO = new javax.swing.JLabel();
-        SCP_DEPUTADOS = new javax.swing.JScrollPane();
-        TBL_DEPUTADOS = new javax.swing.JTable();
         BTN_BUSCAR = new javax.swing.JButton();
         BTN_EXCLUIR = new javax.swing.JButton();
         LBL_BRASAO = new javax.swing.JLabel();
@@ -65,11 +66,24 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
         BTN_EDITAR = new javax.swing.JButton();
         BTN_LISTAR = new javax.swing.JButton();
         BTN_LIMPAR = new javax.swing.JButton();
-        BTN_VOLTAR_MENU = new javax.swing.JButton();
+        SCP_GOV_PRE = new javax.swing.JScrollPane();
+        TBL_GOV_PRE = new javax.swing.JTable();
+        LBL_VICE = new javax.swing.JLabel();
+        TXT_VICE = new javax.swing.JTextField();
+        LBL_URL_FOTO_VICE = new javax.swing.JLabel();
+        TXT_URL_FOTO_VICE = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        PNL_TELA.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CADASTRO: DEPUTADO FEDERAL", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
+        BTN_VOLTAR_MENU.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BTN_VOLTAR_MENU.setText("VOLTAR AO MENU");
+        BTN_VOLTAR_MENU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_VOLTAR_MENUActionPerformed(evt);
+            }
+        });
+
+        PNL_TELA.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "CADASTRO: PRESIDENTE", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
         LBL_NUMERO.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         LBL_NUMERO.setText("NÚMERO:");
@@ -86,26 +100,6 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
         LBL_FOTO.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
         LBL_FOTO.setMaximumSize(new java.awt.Dimension(110, 110));
         LBL_FOTO.setMinimumSize(new java.awt.Dimension(110, 110));
-
-        TBL_DEPUTADOS.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        TBL_DEPUTADOS.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        TBL_DEPUTADOS.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "NÚMERO", "CANDIDATO", "PARTIDO"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        SCP_DEPUTADOS.setViewportView(TBL_DEPUTADOS);
 
         BTN_BUSCAR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BTN_BUSCAR.setText("BUSCAR CANDIDATO");
@@ -160,24 +154,62 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
             }
         });
 
+        TBL_GOV_PRE.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "NÚMERO", "CANDIDATO", "VICE", "PARTIDO"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        SCP_GOV_PRE.setViewportView(TBL_GOV_PRE);
+
+        LBL_VICE.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        LBL_VICE.setText("VICE:");
+
+        LBL_URL_FOTO_VICE.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        LBL_URL_FOTO_VICE.setText("URL FOTO VICE:");
+
         javax.swing.GroupLayout PNL_TELALayout = new javax.swing.GroupLayout(PNL_TELA);
         PNL_TELA.setLayout(PNL_TELALayout);
         PNL_TELALayout.setHorizontalGroup(
             PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PNL_TELALayout.createSequentialGroup()
+                .addGap(158, 158, 158)
+                .addComponent(SCP_GOV_PRE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BTN_LISTAR)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(PNL_TELALayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(LBL_BRASAO, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(72, 72, 72)
-                .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(SCP_DEPUTADOS, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(PNL_TELALayout.createSequentialGroup()
+                        .addComponent(BTN_INSERIR)
+                        .addGap(56, 56, 56)
+                        .addComponent(BTN_EDITAR)
+                        .addGap(56, 56, 56)
+                        .addComponent(BTN_LIMPAR))
+                    .addGroup(PNL_TELALayout.createSequentialGroup()
+                        .addComponent(LBL_BRASAO, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(LBL_URL_FOTO)
                             .addComponent(LBL_PARTIDO)
                             .addComponent(LBL_NOME)
-                            .addComponent(LBL_NUMERO))
+                            .addComponent(LBL_NUMERO)
+                            .addComponent(LBL_VICE)
+                            .addComponent(LBL_URL_FOTO_VICE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TXT_URL_FOTO, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TXT_PARTIDO, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TXT_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PNL_TELALayout.createSequentialGroup()
@@ -186,30 +218,24 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
                                 .addComponent(BTN_BUSCAR)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BTN_EXCLUIR))
-                            .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PNL_TELALayout.createSequentialGroup()
-                                    .addComponent(BTN_INSERIR)
-                                    .addGap(56, 56, 56)
-                                    .addComponent(BTN_EDITAR)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
-                                    .addComponent(BTN_LIMPAR))
-                                .addComponent(TXT_URL_FOTO, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PNL_TELALayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(LBL_FOTO, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(52, 52, 52))
-                    .addGroup(PNL_TELALayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(BTN_LISTAR)
-                        .addContainerGap(34, Short.MAX_VALUE))))
+                            .addComponent(TXT_VICE, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TXT_URL_FOTO_VICE, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(LBL_FOTO, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(52, 52, 52))
         );
         PNL_TELALayout.setVerticalGroup(
             PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PNL_TELALayout.createSequentialGroup()
                 .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PNL_TELALayout.createSequentialGroup()
-                        .addGap(39, 39, 39)
+                        .addContainerGap()
+                        .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LBL_BRASAO, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LBL_FOTO, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PNL_TELALayout.createSequentialGroup()
+                        .addContainerGap(25, Short.MAX_VALUE)
                         .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LBL_NUMERO)
                             .addComponent(TXT_NUMERO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -226,32 +252,26 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LBL_URL_FOTO)
-                            .addComponent(TXT_URL_FOTO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(PNL_TELALayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(LBL_BRASAO, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(LBL_FOTO, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(29, 29, 29)
-                .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(PNL_TELALayout.createSequentialGroup()
+                            .addComponent(TXT_URL_FOTO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(BTN_INSERIR)
-                            .addComponent(BTN_EDITAR)
-                            .addComponent(BTN_LIMPAR))
-                        .addGap(18, 18, 18)
-                        .addComponent(SCP_DEPUTADOS, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(LBL_VICE)
+                            .addComponent(TXT_VICE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(LBL_URL_FOTO_VICE)
+                            .addComponent(TXT_URL_FOTO_VICE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)))
+                .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BTN_INSERIR)
+                    .addComponent(BTN_EDITAR)
+                    .addComponent(BTN_LIMPAR))
+                .addGap(41, 41, 41)
+                .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(SCP_GOV_PRE, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BTN_LISTAR))
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addGap(24, 24, 24))
         );
-
-        BTN_VOLTAR_MENU.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BTN_VOLTAR_MENU.setText("VOLTAR AO MENU");
-        BTN_VOLTAR_MENU.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BTN_VOLTAR_MENUActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -260,7 +280,7 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(PNL_TELA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(37, Short.MAX_VALUE))
+                .addContainerGap(34, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(BTN_VOLTAR_MENU))
@@ -271,22 +291,30 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
                 .addComponent(BTN_VOLTAR_MENU)
                 .addGap(10, 10, 10)
                 .addComponent(PNL_TELA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
+                .addContainerGap(32, Short.MAX_VALUE))
         );
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void BTN_VOLTAR_MENUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_VOLTAR_MENUActionPerformed
+        MenuUrna tela = new MenuUrna();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BTN_VOLTAR_MENUActionPerformed
+
     private void BTN_BUSCARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_BUSCARActionPerformed
         TXT_NOME.setText(null);
         TXT_PARTIDO.setText(null);
         TXT_URL_FOTO.setText(null);
+        TXT_VICE.setText(null);
+        TXT_URL_FOTO_VICE.setText(null);
         LBL_FOTO.setIcon(null);
 
         int numero = Integer.parseInt(TXT_NUMERO.getText());
 
-        String sql = "select * from deputado_federal where FED_NUMERO = ?";
+        String sql = "select * from presidente where PRE_NUMERO = ?";
 
         String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
         String user = "root";
@@ -301,13 +329,17 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
             ResultSet busca = comando.executeQuery();
 
             if(busca.next()==true){
-                nome = busca.getString("FED_NOME");
-                partido = busca.getString("FED_SIGPARTIDO");
-                urlFoto = busca.getString("FED_FOTO");
+                nome = busca.getString("PRE_NOME");
+                partido = busca.getString("PRE_SIGPARTIDO");
+                urlFoto = busca.getString("PRE_FOTO");
+                vice = busca.getString("PRE_VICE");
+                urlFotoVice = busca.getString("PRE_FOTO_VICE");
 
                 TXT_NOME.setText(nome);
                 TXT_PARTIDO.setText(partido);
                 TXT_URL_FOTO.setText(urlFoto);
+                TXT_VICE.setText(vice);
+                TXT_URL_FOTO_VICE.setText(urlFotoVice);
                 fotoCandidato(urlFoto);
             }else{
                 JOptionPane.showMessageDialog(null, "CANDIDATO NÃO ENCONTRADO!"
@@ -325,7 +357,7 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
     private void BTN_EXCLUIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_EXCLUIRActionPerformed
         numero = Integer.parseInt(TXT_NUMERO.getText());
 
-        String sql = "delete from deputado_federal where FED_NUMERO = ?";
+        String sql = "delete from presidente where PRE_NUMERO = ?";
 
         String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
         String user = "root";
@@ -348,6 +380,9 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
             TXT_NOME.setText(null);
             TXT_PARTIDO.setText(null);
             TXT_URL_FOTO.setText(null);
+            TXT_VICE.setText(null);
+            TXT_URL_FOTO_VICE.setText(null);
+            LBL_FOTO.setIcon(null);
         }catch(SQLException erro){
             JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL EXCLUIR O CANDIDATO OU NÃO ESTÁ CADASTRADO!"
                 + "\nTENTE NOVAMENTE!");
@@ -359,9 +394,11 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
         numero = Integer.parseInt(TXT_NUMERO.getText());
         nome = TXT_NOME.getText();
         partido = TXT_PARTIDO.getText();
-        urlFoto = (TXT_URL_FOTO.getText());
+        urlFoto = TXT_URL_FOTO.getText();
+        vice = TXT_VICE.getText();
+        urlFotoVice = TXT_URL_FOTO_VICE.getText();
 
-        String sql = "insert deputado_federal values(?,?,?,?,?)";
+        String sql = "insert presidente values(?,?,?,?,?,?,?)";
 
         String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
         String user = "root";
@@ -376,7 +413,9 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
             comando.setString(2, nome);
             comando.setString(3, partido);
             comando.setString(4, urlFoto);
-            comando.setInt(5, 0);
+            comando.setString(5, vice);
+            comando.setString(6, urlFotoVice);
+            comando.setInt(7, 0);
             comando.executeUpdate();
 
             comando.close();
@@ -388,6 +427,9 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
             TXT_NOME.setText(null);
             TXT_PARTIDO.setText(null);
             TXT_URL_FOTO.setText(null);
+            TXT_VICE.setText(null);
+            TXT_URL_FOTO_VICE.setText(null);
+            LBL_FOTO.setIcon(null);
         }catch(SQLException erro){
             JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL CADASTRAR O CANDIDATO!"
                 + "\nTENTE NOVAMENTE!");
@@ -400,8 +442,10 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
         nome = TXT_NOME.getText();
         partido = TXT_PARTIDO.getText();
         urlFoto = TXT_URL_FOTO.getText();
+        vice = TXT_VICE.getText();
+        urlFotoVice = TXT_URL_FOTO_VICE.getText();
 
-        String sql = "update deputado_federal set FED_NUMERO = ?, FED_NOME = ?, FED_SIGPARTIDO = ?, FED_FOTO = ? where FED_NUMERO = ?";
+        String sql = "update presidente set PRE_NUMERO = ?, PRE_NOME = ?, PRESIGPARTIDO = ?, PRE_FOTO = ?, PRE_VICE = ?, PRE_FOTO_VICE where PRE_NUMERO = ?";
 
         String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
         String user = "root";
@@ -416,7 +460,9 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
             comando.setString(2, nome);
             comando.setString(3, partido);
             comando.setString(4, urlFoto);
-            comando.setInt(5, numero);
+            comando.setString(5, vice);
+            comando.setString(6, urlFotoVice);
+            comando.setInt(7, numero);
             comando.executeUpdate();
 
             comando.close();
@@ -428,6 +474,8 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
             TXT_NOME.setText(null);
             TXT_PARTIDO.setText(null);
             TXT_URL_FOTO.setText(null);
+            TXT_VICE.setText(null);
+            TXT_URL_FOTO_VICE.setText(null);
             LBL_FOTO.setIcon(null);
         }catch(SQLException erro){
             JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL EDITAR OS DADOS DO CANDIDATO!"
@@ -437,7 +485,7 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_EDITARActionPerformed
 
     private void BTN_LISTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_LISTARActionPerformed
-        String sql = "select * from deputado_federal";
+        String sql = "select * from presidente";
 
         String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
         String user = "root";
@@ -450,21 +498,23 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
 
             ResultSet busca = comando.executeQuery();
 
-            DefaultTableModel model = (DefaultTableModel)TBL_DEPUTADOS.getModel();
-            if(model.getColumnCount()>0){
-                model.setColumnCount(0);
+            DefaultTableModel model = (DefaultTableModel)TBL_GOV_PRE.getModel();
+            if(model.getRowCount()>0){
+                model.setRowCount(0);
             }
-            
+
             while(busca.next()==true){
-                numero = busca.getInt("FED_NUMERO");
-                nome = busca.getString("FED_NOME");
-                partido = busca.getString("FED_SIGPARTIDO");
-                
-            Object[] linha = new Object[TBL_DEPUTADOS.getColumnCount()];
+                numero = busca.getInt("PRE_NUMERO");
+                nome = busca.getString("PRE_NOME");
+                vice = busca.getString("PRE_VICE");
+                partido = busca.getString("PRE_SIGPARTIDO");
+
+                Object[] linha = new Object[TBL_GOV_PRE.getColumnCount()];
 
                 linha[0] = numero;
                 linha[1] = nome;
-                linha[2] = partido;
+                linha[2] = vice;
+                linha[3] = partido;
 
                 model.addRow(linha);
             }
@@ -478,17 +528,13 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BTN_LISTARActionPerformed
 
-    private void BTN_VOLTAR_MENUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_VOLTAR_MENUActionPerformed
-        MenuUrna tela = new MenuUrna();
-        tela.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_BTN_VOLTAR_MENUActionPerformed
-
     private void BTN_LIMPARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_LIMPARActionPerformed
         TXT_NUMERO.setText(null);
         TXT_NOME.setText(null);
         TXT_PARTIDO.setText(null);
         TXT_URL_FOTO.setText(null);
+        TXT_VICE.setText(null);
+        TXT_URL_FOTO_VICE.setText(null);
         LBL_FOTO.setIcon(null);
     }//GEN-LAST:event_BTN_LIMPARActionPerformed
 
@@ -509,20 +555,21 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(CadastroDeputadoFederal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroPresidente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(CadastroDeputadoFederal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroPresidente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(CadastroDeputadoFederal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroPresidente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(CadastroDeputadoFederal.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(CadastroPresidente.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroDeputadoFederal().setVisible(true);
+                new CadastroPresidente().setVisible(true);
             }
         });
     }
@@ -541,12 +588,16 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
     private javax.swing.JLabel LBL_NUMERO;
     private javax.swing.JLabel LBL_PARTIDO;
     private javax.swing.JLabel LBL_URL_FOTO;
+    private javax.swing.JLabel LBL_URL_FOTO_VICE;
+    private javax.swing.JLabel LBL_VICE;
     private javax.swing.JPanel PNL_TELA;
-    private javax.swing.JScrollPane SCP_DEPUTADOS;
-    private javax.swing.JTable TBL_DEPUTADOS;
+    private javax.swing.JScrollPane SCP_GOV_PRE;
+    private javax.swing.JTable TBL_GOV_PRE;
     private javax.swing.JTextField TXT_NOME;
     private javax.swing.JTextField TXT_NUMERO;
     private javax.swing.JTextField TXT_PARTIDO;
     private javax.swing.JTextField TXT_URL_FOTO;
+    private javax.swing.JTextField TXT_URL_FOTO_VICE;
+    private javax.swing.JTextField TXT_VICE;
     // End of variables declaration//GEN-END:variables
 }

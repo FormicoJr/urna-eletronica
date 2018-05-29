@@ -30,6 +30,7 @@ public class Fim extends javax.swing.JFrame {
         PNL_FIM = new javax.swing.JPanel();
         LBL_FIM = new javax.swing.JLabel();
         BTN_ENCERRAR = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1205, 648));
@@ -38,13 +39,16 @@ public class Fim extends javax.swing.JFrame {
 
         LBL_FIM.setIcon(new javax.swing.ImageIcon(getClass().getResource("/urnaeletronica/imagens/URNA FIM.png"))); // NOI18N
 
-        BTN_ENCERRAR.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        BTN_ENCERRAR.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         BTN_ENCERRAR.setText("ENCERRAR");
         BTN_ENCERRAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_ENCERRARActionPerformed(evt);
             }
         });
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        jLabel1.setText("VOTOU");
 
         javax.swing.GroupLayout PNL_FIMLayout = new javax.swing.GroupLayout(PNL_FIM);
         PNL_FIM.setLayout(PNL_FIMLayout);
@@ -55,18 +59,21 @@ public class Fim extends javax.swing.JFrame {
                 .addComponent(LBL_FIM, javax.swing.GroupLayout.PREFERRED_SIZE, 623, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(289, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PNL_FIMLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(BTN_ENCERRAR))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PNL_FIMLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BTN_ENCERRAR)
-                .addGap(21, 21, 21))
+                .addComponent(jLabel1)
+                .addContainerGap())
         );
         PNL_FIMLayout.setVerticalGroup(
             PNL_FIMLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PNL_FIMLayout.createSequentialGroup()
-                .addGap(64, 64, 64)
-                .addComponent(LBL_FIM, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
                 .addComponent(BTN_ENCERRAR)
-                .addGap(21, 21, 21))
+                .addGap(11, 11, 11)
+                .addComponent(LBL_FIM, javax.swing.GroupLayout.PREFERRED_SIZE, 383, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 108, Short.MAX_VALUE)
+                .addComponent(jLabel1))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -127,5 +134,6 @@ public class Fim extends javax.swing.JFrame {
     private javax.swing.JButton BTN_ENCERRAR;
     private javax.swing.JLabel LBL_FIM;
     private javax.swing.JPanel PNL_FIM;
+    private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

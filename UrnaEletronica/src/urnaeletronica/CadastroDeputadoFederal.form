@@ -26,16 +26,21 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Component id="PNL_TELA" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="37" max="32767" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <Component id="BTN_VOLTAR_MENU" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+              <Component id="BTN_VOLTAR_MENU" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
               <Component id="PNL_TELA" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
+              <EmptySpace pref="28" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -70,7 +75,6 @@
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Component id="TXT_URL_FOTO" alignment="0" min="-2" pref="341" max="-2" attributes="0"/>
                               <Component id="TXT_PARTIDO" alignment="0" min="-2" pref="91" max="-2" attributes="0"/>
                               <Component id="TXT_NOME" alignment="0" min="-2" pref="309" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
@@ -79,6 +83,16 @@
                                   <Component id="BTN_BUSCAR" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Component id="BTN_EXCLUIR" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                                  <Group type="102" alignment="0" attributes="0">
+                                      <Component id="BTN_INSERIR" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
+                                      <Component id="BTN_EDITAR" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="56" max="32767" attributes="0"/>
+                                      <Component id="BTN_LIMPAR" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Component id="TXT_URL_FOTO" alignment="0" min="-2" pref="341" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -95,13 +109,6 @@
                           <EmptySpace pref="34" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="278" max="-2" attributes="0"/>
-                  <Component id="BTN_INSERIR" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
-                  <Component id="BTN_EDITAR" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -147,6 +154,7 @@
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="BTN_INSERIR" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="BTN_EDITAR" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="BTN_LIMPAR" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="SCP_DEPUTADOS" min="-2" pref="187" max="-2" attributes="0"/>
@@ -309,7 +317,29 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_LISTARActionPerformed"/>
           </Events>
         </Component>
+        <Component class="javax.swing.JButton" name="BTN_LIMPAR">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="LIMPAR"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_LIMPARActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JButton" name="BTN_VOLTAR_MENU">
+      <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="11" style="1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="VOLTAR AO MENU"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_VOLTAR_MENUActionPerformed"/>
+      </Events>
+    </Component>
   </SubComponents>
 </Form>

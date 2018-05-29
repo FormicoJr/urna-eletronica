@@ -57,16 +57,16 @@ public class MenuUrna extends javax.swing.JFrame {
         PNL_MENULayout.setHorizontalGroup(
             PNL_MENULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PNL_MENULayout.createSequentialGroup()
-                .addGap(72, 72, 72)
+                .addGap(253, 253, 253)
                 .addComponent(LBL_JUSTICA, javax.swing.GroupLayout.PREFERRED_SIZE, 613, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(72, Short.MAX_VALUE))
+                .addContainerGap(253, Short.MAX_VALUE))
         );
         PNL_MENULayout.setVerticalGroup(
             PNL_MENULayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(PNL_MENULayout.createSequentialGroup()
-                .addGap(68, 68, 68)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PNL_MENULayout.createSequentialGroup()
+                .addContainerGap(107, Short.MAX_VALUE)
                 .addComponent(LBL_JUSTICA, javax.swing.GroupLayout.PREFERRED_SIZE, 310, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addGap(125, 125, 125))
         );
 
         MNU_CAD_CANDIDATOS.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -101,10 +101,20 @@ public class MenuUrna extends javax.swing.JFrame {
 
         MNI_GOVERNADOR.setText("GOVERNADOR (a)");
         MNI_GOVERNADOR.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        MNI_GOVERNADOR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MNI_GOVERNADORActionPerformed(evt);
+            }
+        });
         MNU_CAD_CANDIDATOS.add(MNI_GOVERNADOR);
 
         MNI_PRESIDENTE.setText("PRESIDENTE (a)");
         MNI_PRESIDENTE.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        MNI_PRESIDENTE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MNI_PRESIDENTEActionPerformed(evt);
+            }
+        });
         MNU_CAD_CANDIDATOS.add(MNI_PRESIDENTE);
 
         MNB_MENU.add(MNU_CAD_CANDIDATOS);
@@ -114,6 +124,11 @@ public class MenuUrna extends javax.swing.JFrame {
 
         MNI_CAD_ELEITOR.setText("CADASTRAR ELEITOR");
         MNI_CAD_ELEITOR.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        MNI_CAD_ELEITOR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MNI_CAD_ELEITORActionPerformed(evt);
+            }
+        });
         MNU_VOTACAO.add(MNI_CAD_ELEITOR);
 
         MNB_MENU.add(MNU_VOTACAO);
@@ -182,6 +197,22 @@ public class MenuUrna extends javax.swing.JFrame {
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_MNI_SENADORActionPerformed
+
+    private void MNI_GOVERNADORActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MNI_GOVERNADORActionPerformed
+        CadastroGovernador tela = new CadastroGovernador();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_MNI_GOVERNADORActionPerformed
+
+    private void MNI_PRESIDENTEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MNI_PRESIDENTEActionPerformed
+        CadastroPresidente tela = new CadastroPresidente();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_MNI_PRESIDENTEActionPerformed
+
+    private void MNI_CAD_ELEITORActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MNI_CAD_ELEITORActionPerformed
+        
+    }//GEN-LAST:event_MNI_CAD_ELEITORActionPerformed
 
     /**
      * @param args the command line arguments

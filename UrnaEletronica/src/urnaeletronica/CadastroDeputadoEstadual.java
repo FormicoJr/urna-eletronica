@@ -64,6 +64,7 @@ public class CadastroDeputadoEstadual extends javax.swing.JFrame {
         BTN_INSERIR = new javax.swing.JButton();
         BTN_EDITAR = new javax.swing.JButton();
         BTN_LISTAR = new javax.swing.JButton();
+        BTN_LIMPAR = new javax.swing.JButton();
         BTN_VOLTAR_MENU = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -151,6 +152,14 @@ public class CadastroDeputadoEstadual extends javax.swing.JFrame {
             }
         });
 
+        BTN_LIMPAR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BTN_LIMPAR.setText("LIMPAR");
+        BTN_LIMPAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_LIMPARActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PNL_TELALayout = new javax.swing.GroupLayout(PNL_TELA);
         PNL_TELA.setLayout(PNL_TELALayout);
         PNL_TELALayout.setHorizontalGroup(
@@ -177,7 +186,13 @@ public class CadastroDeputadoEstadual extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BTN_BUSCAR)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BTN_EXCLUIR)))))
+                                .addComponent(BTN_EXCLUIR))
+                            .addGroup(PNL_TELALayout.createSequentialGroup()
+                                .addComponent(BTN_INSERIR)
+                                .addGap(56, 56, 56)
+                                .addComponent(BTN_EDITAR)
+                                .addGap(56, 56, 56)
+                                .addComponent(BTN_LIMPAR)))))
                 .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PNL_TELALayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -187,12 +202,6 @@ public class CadastroDeputadoEstadual extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(BTN_LISTAR)
                         .addContainerGap(34, Short.MAX_VALUE))))
-            .addGroup(PNL_TELALayout.createSequentialGroup()
-                .addGap(278, 278, 278)
-                .addComponent(BTN_INSERIR)
-                .addGap(74, 74, 74)
-                .addComponent(BTN_EDITAR)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PNL_TELALayout.setVerticalGroup(
             PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,7 +236,8 @@ public class CadastroDeputadoEstadual extends javax.swing.JFrame {
                     .addGroup(PNL_TELALayout.createSequentialGroup()
                         .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BTN_INSERIR)
-                            .addComponent(BTN_EDITAR))
+                            .addComponent(BTN_EDITAR)
+                            .addComponent(BTN_LIMPAR))
                         .addGap(18, 18, 18)
                         .addComponent(SCP_DEPUTADOS, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(BTN_LISTAR))
@@ -235,7 +245,7 @@ public class CadastroDeputadoEstadual extends javax.swing.JFrame {
         );
 
         BTN_VOLTAR_MENU.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BTN_VOLTAR_MENU.setText("MENU PRINCIPAL");
+        BTN_VOLTAR_MENU.setText("VOLTAR AO MENU");
         BTN_VOLTAR_MENU.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_VOLTAR_MENUActionPerformed(evt);
@@ -301,13 +311,14 @@ public class CadastroDeputadoEstadual extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_EXCLUIRActionPerformed
 
     private void BTN_EDITARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_EDITARActionPerformed
+        numero = Integer.parseInt(TXT_NUMERO.getText());
         nome = TXT_NOME.getText();
         partido = TXT_PARTIDO.getText();
         urlFoto = TXT_URL_FOTO.getText();
-
+        
         String sql = "update deputado_estadual set EST_NUMERO = ?, EST_NOME = ?, EST_SIGPARTIDO = ?, EST_FOTO = ? where EST_NUMERO = ?";
 
-        String url = "jdbc:mysql://127.0.0.1:3306/banco_delfino_01-05";
+        String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
         String user = "root";
         String senha = "shieldcorrupted";
 
@@ -332,6 +343,7 @@ public class CadastroDeputadoEstadual extends javax.swing.JFrame {
             TXT_NOME.setText(null);
             TXT_PARTIDO.setText(null);
             TXT_URL_FOTO.setText(null);
+            LBL_FOTO.setIcon(null);
         }catch(SQLException erro){
             JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL EDITAR OS DADOS DO CANDIDATO!"
                 + "\nTENTE NOVAMENTE!");
@@ -352,14 +364,17 @@ public class CadastroDeputadoEstadual extends javax.swing.JFrame {
             PreparedStatement comando = conexao.prepareStatement(sql);
 
             ResultSet busca = comando.executeQuery();
-
+            
             DefaultTableModel model = (DefaultTableModel)TBL_DEPUTADOS.getModel();
+                if(model.getRowCount()>0){
+                    model.setRowCount(0);
+                }
+            
             while(busca.next()==true){
                 numero = busca.getInt("EST_NUMERO");
                 nome = busca.getString("EST_NOME");
                 partido = busca.getString("EST_SIGPARTIDO");
-            }
-            
+                            
             Object[] linha = new Object[TBL_DEPUTADOS.getColumnCount()];
                  
                 linha[0] = numero;
@@ -367,6 +382,7 @@ public class CadastroDeputadoEstadual extends javax.swing.JFrame {
                 linha[2] = partido;
                 
                 model.addRow(linha);
+            }
             
             busca.close();
             comando.close();
@@ -426,8 +442,9 @@ public class CadastroDeputadoEstadual extends javax.swing.JFrame {
         nome = TXT_NOME.getText();
         partido = TXT_PARTIDO.getText();
         urlFoto = (TXT_URL_FOTO.getText());
+        LBL_FOTO.setIcon(null);
 
-        String sql = "insert  values(?,?,?,?)";
+        String sql = "insert deputado_estadual values(?,?,?,?,?)";
 
         String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
         String user = "root";
@@ -442,6 +459,7 @@ public class CadastroDeputadoEstadual extends javax.swing.JFrame {
             comando.setString(2, nome);
             comando.setString(3, partido);
             comando.setString(4, urlFoto);
+            comando.setInt(5, 0);
             comando.executeUpdate();
 
             comando.close();
@@ -465,6 +483,14 @@ public class CadastroDeputadoEstadual extends javax.swing.JFrame {
         tela.setVisible(true);
         dispose();
     }//GEN-LAST:event_BTN_VOLTAR_MENUActionPerformed
+
+    private void BTN_LIMPARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_LIMPARActionPerformed
+        TXT_NUMERO.setText(null);
+        TXT_NOME.setText(null);
+        TXT_PARTIDO.setText(null);
+        TXT_URL_FOTO.setText(null);
+        LBL_FOTO.setIcon(null);
+    }//GEN-LAST:event_BTN_LIMPARActionPerformed
 
     /**
      * @param args the command line arguments
@@ -506,6 +532,7 @@ public class CadastroDeputadoEstadual extends javax.swing.JFrame {
     private javax.swing.JButton BTN_EDITAR;
     private javax.swing.JButton BTN_EXCLUIR;
     private javax.swing.JButton BTN_INSERIR;
+    private javax.swing.JButton BTN_LIMPAR;
     private javax.swing.JButton BTN_LISTAR;
     private javax.swing.JButton BTN_VOLTAR_MENU;
     private javax.swing.JLabel LBL_BRASAO;

@@ -64,6 +64,8 @@ public class CadastroSenador extends javax.swing.JFrame {
         BTN_INSERIR = new javax.swing.JButton();
         BTN_EDITAR = new javax.swing.JButton();
         BTN_LISTAR = new javax.swing.JButton();
+        BTN_LIMPAR = new javax.swing.JButton();
+        BTN_VOLTAR_MENU = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -150,6 +152,14 @@ public class CadastroSenador extends javax.swing.JFrame {
             }
         });
 
+        BTN_LIMPAR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BTN_LIMPAR.setText("LIMPAR");
+        BTN_LIMPAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_LIMPARActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout PNL_TELALayout = new javax.swing.GroupLayout(PNL_TELA);
         PNL_TELA.setLayout(PNL_TELALayout);
         PNL_TELALayout.setHorizontalGroup(
@@ -168,7 +178,6 @@ public class CadastroSenador extends javax.swing.JFrame {
                             .addComponent(LBL_NUMERO))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(TXT_URL_FOTO, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TXT_PARTIDO, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(TXT_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 309, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(PNL_TELALayout.createSequentialGroup()
@@ -176,7 +185,15 @@ public class CadastroSenador extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(BTN_BUSCAR)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BTN_EXCLUIR)))))
+                                .addComponent(BTN_EXCLUIR))
+                            .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(javax.swing.GroupLayout.Alignment.LEADING, PNL_TELALayout.createSequentialGroup()
+                                    .addComponent(BTN_INSERIR)
+                                    .addGap(56, 56, 56)
+                                    .addComponent(BTN_EDITAR)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
+                                    .addComponent(BTN_LIMPAR))
+                                .addComponent(TXT_URL_FOTO, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 341, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PNL_TELALayout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -186,12 +203,6 @@ public class CadastroSenador extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(BTN_LISTAR)
                         .addContainerGap(34, Short.MAX_VALUE))))
-            .addGroup(PNL_TELALayout.createSequentialGroup()
-                .addGap(278, 278, 278)
-                .addComponent(BTN_INSERIR)
-                .addGap(74, 74, 74)
-                .addComponent(BTN_EDITAR)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PNL_TELALayout.setVerticalGroup(
             PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -226,12 +237,21 @@ public class CadastroSenador extends javax.swing.JFrame {
                     .addGroup(PNL_TELALayout.createSequentialGroup()
                         .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(BTN_INSERIR)
-                            .addComponent(BTN_EDITAR))
+                            .addComponent(BTN_EDITAR)
+                            .addComponent(BTN_LIMPAR))
                         .addGap(18, 18, 18)
                         .addComponent(SCP_DEPUTADOS, javax.swing.GroupLayout.PREFERRED_SIZE, 187, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(BTN_LISTAR))
                 .addContainerGap(28, Short.MAX_VALUE))
         );
+
+        BTN_VOLTAR_MENU.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BTN_VOLTAR_MENU.setText("VOLTAR AO MENU");
+        BTN_VOLTAR_MENU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_VOLTAR_MENUActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -240,17 +260,22 @@ public class CadastroSenador extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addComponent(PNL_TELA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(37, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(BTN_VOLTAR_MENU))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(33, 33, 33)
+                .addComponent(BTN_VOLTAR_MENU)
+                .addGap(10, 10, 10)
                 .addComponent(PNL_TELA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTN_BUSCARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_BUSCARActionPerformed
@@ -336,7 +361,7 @@ public class CadastroSenador extends javax.swing.JFrame {
         partido = TXT_PARTIDO.getText();
         urlFoto = (TXT_URL_FOTO.getText());
 
-        String sql = "insert  values(?,?,?,?)";
+        String sql = "insert senador values(?,?,?,?,?)";
 
         String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
         String user = "root";
@@ -351,6 +376,7 @@ public class CadastroSenador extends javax.swing.JFrame {
             comando.setString(2, nome);
             comando.setString(3, partido);
             comando.setString(4, urlFoto);
+            comando.setInt(5, 0);
             comando.executeUpdate();
 
             comando.close();
@@ -401,6 +427,7 @@ public class CadastroSenador extends javax.swing.JFrame {
             TXT_NOME.setText(null);
             TXT_PARTIDO.setText(null);
             TXT_URL_FOTO.setText(null);
+            LBL_FOTO.setIcon(null);
         }catch(SQLException erro){
             JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL EDITAR OS DADOS DO CANDIDATO!"
                 + "\nTENTE NOVAMENTE!");
@@ -423,19 +450,23 @@ public class CadastroSenador extends javax.swing.JFrame {
             ResultSet busca = comando.executeQuery();
 
             DefaultTableModel model = (DefaultTableModel)TBL_DEPUTADOS.getModel();
+            if(model.getColumnCount()>0){
+                model.setColumnCount(0);
+            }
+            
             while(busca.next()==true){
                 numero = busca.getInt("FED_NUMERO");
                 nome = busca.getString("FED_NOME");
                 partido = busca.getString("FED_SIGPARTIDO");
-            }
-
+                
             Object[] linha = new Object[TBL_DEPUTADOS.getColumnCount()];
 
-            linha[0] = numero;
-            linha[1] = nome;
-            linha[2] = partido;
+                linha[0] = numero;
+                linha[1] = nome;
+                linha[2] = partido;
 
-            model.addRow(linha);
+                model.addRow(linha);
+            }
 
             busca.close();
             comando.close();
@@ -445,6 +476,20 @@ public class CadastroSenador extends javax.swing.JFrame {
             erro.printStackTrace();
         }
     }//GEN-LAST:event_BTN_LISTARActionPerformed
+
+    private void BTN_VOLTAR_MENUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_VOLTAR_MENUActionPerformed
+        MenuUrna tela = new MenuUrna();
+        tela.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_BTN_VOLTAR_MENUActionPerformed
+
+    private void BTN_LIMPARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_LIMPARActionPerformed
+        TXT_NUMERO.setText(null);
+        TXT_NOME.setText(null);
+        TXT_PARTIDO.setText(null);
+        TXT_URL_FOTO.setText(null);
+        LBL_FOTO.setIcon(null);
+    }//GEN-LAST:event_BTN_LIMPARActionPerformed
 
     /**
      * @param args the command line arguments
@@ -486,7 +531,9 @@ public class CadastroSenador extends javax.swing.JFrame {
     private javax.swing.JButton BTN_EDITAR;
     private javax.swing.JButton BTN_EXCLUIR;
     private javax.swing.JButton BTN_INSERIR;
+    private javax.swing.JButton BTN_LIMPAR;
     private javax.swing.JButton BTN_LISTAR;
+    private javax.swing.JButton BTN_VOLTAR_MENU;
     private javax.swing.JLabel LBL_BRASAO;
     private javax.swing.JLabel LBL_FOTO;
     private javax.swing.JLabel LBL_NOME;
