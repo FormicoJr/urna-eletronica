@@ -963,6 +963,7 @@ public class TelaVotacao extends javax.swing.JFrame {
                     limpaTela();
                     txtCandidatoVisible(LBL_CARGO.getText());
                 } catch (SQLException erro) {
+                    LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
                     erro.printStackTrace();
                 }
             } else if (LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)") && LBL_VOTOBRANCONULO.getText().equals("")) {

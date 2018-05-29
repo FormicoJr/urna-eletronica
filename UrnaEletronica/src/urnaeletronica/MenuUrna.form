@@ -11,7 +11,7 @@
                 <TitledBorder/>
               </Border>
             </Property>
-            <Property name="text" type="java.lang.String" value="CADASTRAR CANDIDATOS"/>
+            <Property name="text" type="java.lang.String" value="CADASTROS"/>
           </Properties>
           <SubComponents>
             <MenuItem class="javax.swing.JMenuItem" name="MNI_DEP_EST">
@@ -79,6 +79,19 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MNI_PRESIDENTEActionPerformed"/>
               </Events>
             </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="MNI_CAD_ELEITOR">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="CADASTRAR ELEITOR"/>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
+                    <TitledBorder/>
+                  </Border>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MNI_CAD_ELEITORActionPerformed"/>
+              </Events>
+            </MenuItem>
           </SubComponents>
         </Menu>
         <Menu class="javax.swing.JMenu" name="MNU_VOTACAO">
@@ -91,17 +104,12 @@
             <Property name="text" type="java.lang.String" value="VOTA&#xc7;&#xc3;O"/>
           </Properties>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="MNI_CAD_ELEITOR">
+            <MenuItem class="javax.swing.JMenuItem" name="MNI_VOTAR">
               <Properties>
-                <Property name="text" type="java.lang.String" value="CADASTRAR ELEITOR"/>
-                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-                  <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                    <TitledBorder/>
-                  </Border>
-                </Property>
+                <Property name="text" type="java.lang.String" value="INICIAR VOTA&#xc7;&#xc3;O"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MNI_CAD_ELEITORActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="MNI_VOTARActionPerformed"/>
               </Events>
             </MenuItem>
           </SubComponents>
@@ -129,11 +137,6 @@
                         <TitledBorder/>
                       </Border>
                     </Property>
-                  </Properties>
-                </MenuItem>
-                <MenuItem class="javax.swing.JMenuItem" name="MNI_VOTO_BRANCO_NULO">
-                  <Properties>
-                    <Property name="text" type="java.lang.String" value="TOTAL DE VOTOS BRANCOS E NULOS"/>
                   </Properties>
                 </MenuItem>
               </SubComponents>

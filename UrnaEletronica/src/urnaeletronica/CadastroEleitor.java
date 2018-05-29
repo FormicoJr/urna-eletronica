@@ -320,10 +320,6 @@ public class CadastroEleitor extends javax.swing.JFrame {
             conexao.close();
 
             JOptionPane.showMessageDialog(null, "ELEITOR REGISTRADO!");
-            
-            TelaVotacao tela = new TelaVotacao();
-            tela.setVisible(true);
-            dispose();
 
         }catch(SQLException erro){
             JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL REGISTRAR O ELEITOR!"

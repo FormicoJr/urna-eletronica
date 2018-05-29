@@ -38,12 +38,12 @@ public class MenuUrna extends javax.swing.JFrame {
         MNI_SENADOR = new javax.swing.JMenuItem();
         MNI_GOVERNADOR = new javax.swing.JMenuItem();
         MNI_PRESIDENTE = new javax.swing.JMenuItem();
-        MNU_VOTACAO = new javax.swing.JMenu();
         MNI_CAD_ELEITOR = new javax.swing.JMenuItem();
+        MNU_VOTACAO = new javax.swing.JMenu();
+        MNI_VOTAR = new javax.swing.JMenuItem();
         MNU_OPCOES = new javax.swing.JMenu();
         MNU_RESULTADOS = new javax.swing.JMenu();
         MNI_RELATORIO_VENCEDORES = new javax.swing.JMenuItem();
-        MNI_VOTO_BRANCO_NULO = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,7 +70,7 @@ public class MenuUrna extends javax.swing.JFrame {
         );
 
         MNU_CAD_CANDIDATOS.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        MNU_CAD_CANDIDATOS.setText("CADASTRAR CANDIDATOS");
+        MNU_CAD_CANDIDATOS.setText("CADASTROS");
 
         MNI_DEP_EST.setText("DEPUTADO ESTADUAL (a)");
         MNI_DEP_EST.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
@@ -117,11 +117,6 @@ public class MenuUrna extends javax.swing.JFrame {
         });
         MNU_CAD_CANDIDATOS.add(MNI_PRESIDENTE);
 
-        MNB_MENU.add(MNU_CAD_CANDIDATOS);
-
-        MNU_VOTACAO.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        MNU_VOTACAO.setText("VOTAÇÃO");
-
         MNI_CAD_ELEITOR.setText("CADASTRAR ELEITOR");
         MNI_CAD_ELEITOR.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         MNI_CAD_ELEITOR.addActionListener(new java.awt.event.ActionListener() {
@@ -129,7 +124,20 @@ public class MenuUrna extends javax.swing.JFrame {
                 MNI_CAD_ELEITORActionPerformed(evt);
             }
         });
-        MNU_VOTACAO.add(MNI_CAD_ELEITOR);
+        MNU_CAD_CANDIDATOS.add(MNI_CAD_ELEITOR);
+
+        MNB_MENU.add(MNU_CAD_CANDIDATOS);
+
+        MNU_VOTACAO.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        MNU_VOTACAO.setText("VOTAÇÃO");
+
+        MNI_VOTAR.setText("INICIAR VOTAÇÃO");
+        MNI_VOTAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MNI_VOTARActionPerformed(evt);
+            }
+        });
+        MNU_VOTACAO.add(MNI_VOTAR);
 
         MNB_MENU.add(MNU_VOTACAO);
 
@@ -141,9 +149,6 @@ public class MenuUrna extends javax.swing.JFrame {
         MNI_RELATORIO_VENCEDORES.setText("CANDIDATOS VENCEDORES");
         MNI_RELATORIO_VENCEDORES.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
         MNU_RESULTADOS.add(MNI_RELATORIO_VENCEDORES);
-
-        MNI_VOTO_BRANCO_NULO.setText("TOTAL DE VOTOS BRANCOS E NULOS");
-        MNU_RESULTADOS.add(MNI_VOTO_BRANCO_NULO);
 
         MNU_OPCOES.add(MNU_RESULTADOS);
 
@@ -211,8 +216,14 @@ public class MenuUrna extends javax.swing.JFrame {
     }//GEN-LAST:event_MNI_PRESIDENTEActionPerformed
 
     private void MNI_CAD_ELEITORActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MNI_CAD_ELEITORActionPerformed
-        
+        CadastroEleitor tela = new CadastroEleitor();
+        tela.setVisible(true);
+        dispose();
     }//GEN-LAST:event_MNI_CAD_ELEITORActionPerformed
+
+    private void MNI_VOTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MNI_VOTARActionPerformed
+        
+    }//GEN-LAST:event_MNI_VOTARActionPerformed
 
     /**
      * @param args the command line arguments
@@ -260,7 +271,7 @@ public class MenuUrna extends javax.swing.JFrame {
     private javax.swing.JMenuItem MNI_PRESIDENTE;
     private javax.swing.JMenuItem MNI_RELATORIO_VENCEDORES;
     private javax.swing.JMenuItem MNI_SENADOR;
-    private javax.swing.JMenuItem MNI_VOTO_BRANCO_NULO;
+    private javax.swing.JMenuItem MNI_VOTAR;
     private javax.swing.JMenu MNU_CAD_CANDIDATOS;
     private javax.swing.JMenu MNU_OPCOES;
     private javax.swing.JMenu MNU_RESULTADOS;

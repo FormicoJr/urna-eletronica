@@ -436,7 +436,7 @@ public class CadastroSenador extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_EDITARActionPerformed
 
     private void BTN_LISTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_LISTARActionPerformed
-        String sql = "select * from deputado_federal";
+        String sql = "select * from senador";
 
         String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
         String user = "root";
@@ -450,14 +450,14 @@ public class CadastroSenador extends javax.swing.JFrame {
             ResultSet busca = comando.executeQuery();
 
             DefaultTableModel model = (DefaultTableModel)TBL_DEPUTADOS.getModel();
-            if(model.getColumnCount()>0){
-                model.setColumnCount(0);
+            if(model.getRowCount()>0){
+                model.setRowCount(0);
             }
             
             while(busca.next()==true){
-                numero = busca.getInt("FED_NUMERO");
-                nome = busca.getString("FED_NOME");
-                partido = busca.getString("FED_SIGPARTIDO");
+                numero = busca.getInt("SEN_NUMERO");
+                nome = busca.getString("SEN_NOME");
+                partido = busca.getString("SEN_SIGPARTIDO");
                 
             Object[] linha = new Object[TBL_DEPUTADOS.getColumnCount()];
 

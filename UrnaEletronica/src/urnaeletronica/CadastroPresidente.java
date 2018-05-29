@@ -412,8 +412,8 @@ public class CadastroPresidente extends javax.swing.JFrame {
             comando.setInt(1, numero);
             comando.setString(2, nome);
             comando.setString(3, partido);
-            comando.setString(4, urlFoto);
-            comando.setString(5, vice);
+            comando.setString(4, vice);
+            comando.setString(5, urlFoto);
             comando.setString(6, urlFotoVice);
             comando.setInt(7, 0);
             comando.executeUpdate();
@@ -445,7 +445,7 @@ public class CadastroPresidente extends javax.swing.JFrame {
         vice = TXT_VICE.getText();
         urlFotoVice = TXT_URL_FOTO_VICE.getText();
 
-        String sql = "update presidente set PRE_NUMERO = ?, PRE_NOME = ?, PRESIGPARTIDO = ?, PRE_FOTO = ?, PRE_VICE = ?, PRE_FOTO_VICE where PRE_NUMERO = ?";
+        String sql = "update presidente set PRE_NUMERO = ?, PRE_NOME = ?, PRE_SIGPARTIDO = ?, PRE_VICE = ?, PRE_FOTO = ?, PRE_FOTO_VICE = ? where PRE_NUMERO = ?";
 
         String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
         String user = "root";
@@ -459,8 +459,8 @@ public class CadastroPresidente extends javax.swing.JFrame {
             comando.setInt(1, numero);
             comando.setString(2, nome);
             comando.setString(3, partido);
-            comando.setString(4, urlFoto);
-            comando.setString(5, vice);
+            comando.setString(4, vice);
+            comando.setString(5, urlFoto);
             comando.setString(6, urlFotoVice);
             comando.setInt(7, numero);
             comando.executeUpdate();

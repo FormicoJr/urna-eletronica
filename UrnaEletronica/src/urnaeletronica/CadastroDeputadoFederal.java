@@ -451,9 +451,9 @@ public class CadastroDeputadoFederal extends javax.swing.JFrame {
             ResultSet busca = comando.executeQuery();
 
             DefaultTableModel model = (DefaultTableModel)TBL_DEPUTADOS.getModel();
-            if(model.getColumnCount()>0){
-                model.setColumnCount(0);
-            }
+                if(model.getRowCount()>0){
+                    model.setRowCount(0);
+                }
             
             while(busca.next()==true){
                 numero = busca.getInt("FED_NUMERO");

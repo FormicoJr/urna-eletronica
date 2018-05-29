@@ -92,7 +92,9 @@ public class Fim extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTN_ENCERRARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_ENCERRARActionPerformed
-            
+            MenuUrna tela = new MenuUrna();
+            tela.setVisible(true);
+            dispose();
     }//GEN-LAST:event_BTN_ENCERRARActionPerformed
 
     /**
