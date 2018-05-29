@@ -5,6 +5,8 @@
  */
 package urnaeletronica;
 
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
+
 /**
  *
  * @author MARCELO
@@ -15,7 +17,7 @@ public class UrnaEletronica {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        
     }
     
 }

@@ -6,16 +6,23 @@
 package urnaeletronica;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.net.URL;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.text.Document;
 import javax.swing.text.PlainDocument;
+import sun.audio.AudioPlayer;
+import sun.audio.AudioStream;
 
 /**
  *
@@ -27,11 +34,21 @@ public class TelaVotacao extends javax.swing.JFrame {
     int numCand;
     String digito;
 
+    public void audio() {
+        InputStream inAudio;
+        try {
+            inAudio = new FileInputStream(new File("C:\\AudioUrna\\AudioUrna.wav"));
+            AudioStream audio = new AudioStream(inAudio);
+            AudioPlayer.player.start(audio);
+            Thread.sleep(2000);
+        } catch (Exception erro) {
+        }
+    }
+
     public void fotoCandidato(String foto) {
         File img = new File(foto);
         ImageIcon candidato = new ImageIcon(img.getPath());
         LBL_FOTO.setIcon(candidato);
-
     }
 
     public void fotoVice(String foto) {
@@ -864,155 +881,16 @@ public class TelaVotacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTN_CONFIRMAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CONFIRMAActionPerformed
-        if (LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)") && LBL_VOTOBRANCONULO.getText().equals("")) {
-            nCandidato = TXT_NUM1.getText() + TXT_NUM2.getText() + TXT_NUM3.getText()
-                    + TXT_NUM4.getText() + TXT_NUM5.getText();
-            numCand = Integer.parseInt(nCandidato);
-
-            String sql = "update deputado_estadual set EST_TOTAL = (EST_TOTAL + 1) where EST_NUMERO = ?";
-
-            String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
-            String user = "root";
-            String senha = "shieldcorrupted";
-
-            try {
-                Connection conexao = DriverManager.getConnection(url, user, senha);
-
-                PreparedStatement comando = conexao.prepareStatement(sql);
-
-                comando.setInt(1, numCand);
-                comando.executeUpdate();
-
-                comando.close();
-                conexao.close();
-
-                LBL_CARGO.setText("DEPUTADO FEDERAL (a)");
-                limpaTxtCandidato();
-                limpaTela();
-                txtCandidatoVisible(LBL_CARGO.getText());
-            } catch (SQLException erro) {
-                erro.printStackTrace();
-            }
-        } else if (LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)") && LBL_VOTOBRANCONULO.getText().equals("")) {
-            nCandidato = TXT_NUM1.getText() + TXT_NUM2.getText() + TXT_NUM3.getText()
-                    + TXT_NUM4.getText();
-            numCand = Integer.parseInt(nCandidato);
-
-            String sql = "update deputado_federal set FED_TOTAL = (FED_TOTAL + 1) where FED_NUMERO = ?";
-
-            String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
-            String user = "root";
-            String senha = "shieldcorrupted";
-
-            try {
-                Connection conexao = DriverManager.getConnection(url, user, senha);
-
-                PreparedStatement comando = conexao.prepareStatement(sql);
-
-                comando.setInt(1, numCand);
-                comando.executeUpdate();
-
-                comando.close();
-                conexao.close();
-
-                LBL_CARGO.setText("SENADOR (a)");
-                limpaTxtCandidato();
-                limpaTela();
-                txtCandidatoVisible(LBL_CARGO.getText());
-            } catch (SQLException erro) {
-                erro.printStackTrace();
-            }
-        } else if (LBL_CARGO.getText().equals("SENADOR (a)") && LBL_VOTOBRANCONULO.getText().equals("")) {
-            nCandidato = TXT_NUM1.getText() + TXT_NUM2.getText() + TXT_NUM3.getText();
-            numCand = Integer.parseInt(nCandidato);
-
-            String sql = "update senador set SEN_TOTAL = (SEN_TOTAL + 1) where SEN_NUMERO = ?";
-
-            String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
-            String user = "root";
-            String senha = "shieldcorrupted";
-
-            try {
-                Connection conexao = DriverManager.getConnection(url, user, senha);
-
-                PreparedStatement comando = conexao.prepareStatement(sql);
-
-                comando.setInt(1, numCand);
-                comando.executeUpdate();
-
-                comando.close();
-                conexao.close();
-
-                LBL_CARGO.setText("GOVERNADOR (a)");
-                limpaTxtCandidato();
-                limpaTela();
-                txtCandidatoVisible(LBL_CARGO.getText());
-            } catch (SQLException erro) {
-                erro.printStackTrace();
-            }
-        } else if (LBL_CARGO.getText().equals("GOVERNADOR (a)") && LBL_VOTOBRANCONULO.getText().equals("")) {
-            nCandidato = TXT_NUM1.getText() + TXT_NUM2.getText();
-            numCand = Integer.parseInt(nCandidato);
-
-            String sql = "update governador set GOV_TOTAL = (GOV_TOTAL + 1)  where GOV_NUMERO = ?";
-
-            String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
-            String user = "root";
-            String senha = "shieldcorrupted";
-
-            try {
-                Connection conexao = DriverManager.getConnection(url, user, senha);
-
-                PreparedStatement comando = conexao.prepareStatement(sql);
-
-                comando.setInt(1, numCand);
-                comando.executeUpdate();
-
-                comando.close();
-                conexao.close();
-
-                LBL_CARGO.setText("PRESIDENTE (a)");
-                limpaTxtCandidato();
-                limpaTela();
-                txtCandidatoVisible(LBL_CARGO.getText());
-            } catch (SQLException erro) {
-                erro.printStackTrace();
-            }
-        } else if (LBL_CARGO.getText().equals("PRESIDENTE (a)") && LBL_VOTOBRANCONULO.getText().equals("")) {
-            nCandidato = TXT_NUM1.getText() + TXT_NUM2.getText();
-            numCand = Integer.parseInt(nCandidato);
-
-            String sql = "update presidente set PRE_TOTAL = (PRE_TOTAL + 1)  where PRE_NUMERO = ?";
-
-            String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
-            String user = "root";
-            String senha = "shieldcorrupted";
-
-            try {
-                Connection conexao = DriverManager.getConnection(url, user, senha);
-
-                PreparedStatement comando = conexao.prepareStatement(sql);
-
-                comando.setInt(1, numCand);
-                comando.executeUpdate();
-
-                comando.close();
-                conexao.close();
-
-                limpaTela();
-                TXT_NUM1.setVisible(false);
-                TXT_NUM2.setVisible(false);
-                Fim tela = new Fim();
-                tela.setLocationRelativeTo(null);
-                tela.show();
-                dispose();
-            } catch (SQLException erro) {
-                Fim tela = new Fim();
-                tela.setLocationRelativeTo(null);
-                tela.show();
-                dispose();
-                erro.printStackTrace();
-            }
+        if (LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)") && TXT_NUM5.getText().equals("")) {
+            LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
+        } else if (LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)") && TXT_NUM4.getText().equals("")) {
+            LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
+        } else if (LBL_CARGO.getText().equals("SENADOR (a)") && TXT_NUM3.getText().equals("")) {
+            LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
+        } else if (LBL_CARGO.getText().equals("GOVERNADOR (a)") && TXT_NUM2.getText().equals("")) {
+            LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
+        } else if (LBL_CARGO.getText().equals("PRESIDENTE (a)") && TXT_NUM2.getText().equals("")) {
+            LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
         }
 
         //CONDIÇÕES PARA VOTO NULO OU EM BRANCO
@@ -1023,6 +901,7 @@ public class TelaVotacao extends javax.swing.JFrame {
                 LBL_CARGO.setText("DEPUTADO FEDERAL (a)");
                 limpaTxtCandidato();
                 limpaTela();
+                audio();
                 txtCandidatoVisible(LBL_CARGO.getText());
             } else if (LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)")) {
                 LBL_NUMERO.setText("NÚMERO:");
@@ -1030,6 +909,7 @@ public class TelaVotacao extends javax.swing.JFrame {
                 LBL_CARGO.setText("SENADOR (a)");
                 limpaTxtCandidato();
                 limpaTela();
+                audio();
                 txtCandidatoVisible(LBL_CARGO.getText());
             } else if (LBL_CARGO.getText().equals("SENADOR (a)")) {
                 LBL_NUMERO.setText("NÚMERO:");
@@ -1037,6 +917,7 @@ public class TelaVotacao extends javax.swing.JFrame {
                 LBL_CARGO.setText("GOVERNADOR (a)");
                 limpaTxtCandidato();
                 limpaTela();
+                audio();
                 txtCandidatoVisible(LBL_CARGO.getText());
             } else if (LBL_CARGO.getText().equals("GOVERNADOR (a)")) {
                 LBL_NUMERO.setText("NÚMERO:");
@@ -1044,24 +925,170 @@ public class TelaVotacao extends javax.swing.JFrame {
                 LBL_CARGO.setText("PRESIDENTE (a)");
                 limpaTxtCandidato();
                 limpaTela();
+                audio();
                 txtCandidatoVisible(LBL_CARGO.getText());
             } else if (LBL_CARGO.getText().equals("PRESIDENTE (a)")) {
+                audio();
                 Fim tela = new Fim();
                 tela.setLocationRelativeTo(null);
                 tela.show();
                 dispose();
             }
 
-            if (LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)") && TXT_NUM5.getText().equals("")) {
-                LBL_AVISONUMERO.setText("DIGITE O NÚMERO COMPLETO DO SEU CANDIDATO");
-            }else if(LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)") && TXT_NUM4.getText().equals("")) {
-                LBL_AVISONUMERO.setText("DIGITE O NÚMERO COMPLETO DO SEU CANDIDATO");
-            }else if(LBL_CARGO.getText().equals("SENADOR (a)") && TXT_NUM3.getText().equals("")) {
-                LBL_AVISONUMERO.setText("DIGITE O NÚMERO COMPLETO DO SEU CANDIDATO");
-            }else if(LBL_CARGO.getText().equals("GOVERNADOR (a)") && TXT_NUM2.getText().equals("")) {
-                LBL_AVISONUMERO.setText("DIGITE O NÚMERO COMPLETO DO SEU CANDIDATO");
-            }else if(LBL_CARGO.getText().equals("PRESIDENTE (a)") && TXT_NUM2.getText().equals("")) {
-                LBL_AVISONUMERO.setText("DIGITE O NÚMERO COMPLETO DO SEU CANDIDATO");
+            if (LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)") && LBL_VOTOBRANCONULO.getText().equals("")) {
+                nCandidato = TXT_NUM1.getText() + TXT_NUM2.getText() + TXT_NUM3.getText()
+                        + TXT_NUM4.getText() + TXT_NUM5.getText();
+                numCand = Integer.parseInt(nCandidato);
+
+                String sql = "update deputado_estadual set EST_TOTAL = (EST_TOTAL + 1) where EST_NUMERO = ?";
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String user = "root";
+                String senha = "shieldcorrupted";
+
+                try {
+                    Connection conexao = DriverManager.getConnection(url, user, senha);
+
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    comando.setInt(1, numCand);
+                    comando.executeUpdate();
+
+                    comando.close();
+                    conexao.close();
+
+                    audio();
+                    LBL_CARGO.setText("DEPUTADO FEDERAL (a)");
+                    limpaTxtCandidato();
+                    limpaTela();
+                    txtCandidatoVisible(LBL_CARGO.getText());
+                } catch (SQLException erro) {
+                    erro.printStackTrace();
+                }
+            } else if (LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)") && LBL_VOTOBRANCONULO.getText().equals("")) {
+                nCandidato = TXT_NUM1.getText() + TXT_NUM2.getText() + TXT_NUM3.getText()
+                        + TXT_NUM4.getText();
+                numCand = Integer.parseInt(nCandidato);
+
+                String sql = "update deputado_federal set FED_TOTAL = (FED_TOTAL + 1) where FED_NUMERO = ?";
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String user = "root";
+                String senha = "shieldcorrupted";
+
+                try {
+                    Connection conexao = DriverManager.getConnection(url, user, senha);
+
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    comando.setInt(1, numCand);
+                    comando.executeUpdate();
+
+                    comando.close();
+                    conexao.close();
+
+                    audio();
+                    LBL_CARGO.setText("SENADOR (a)");
+                    limpaTxtCandidato();
+                    limpaTela();
+                    txtCandidatoVisible(LBL_CARGO.getText());
+                } catch (SQLException erro) {
+                    erro.printStackTrace();
+                }
+            } else if (LBL_CARGO.getText().equals("SENADOR (a)") && LBL_VOTOBRANCONULO.getText().equals("")) {
+                nCandidato = TXT_NUM1.getText() + TXT_NUM2.getText() + TXT_NUM3.getText();
+                numCand = Integer.parseInt(nCandidato);
+
+                String sql = "update senador set SEN_TOTAL = (SEN_TOTAL + 1) where SEN_NUMERO = ?";
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String user = "root";
+                String senha = "shieldcorrupted";
+
+                try {
+                    Connection conexao = DriverManager.getConnection(url, user, senha);
+
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    comando.setInt(1, numCand);
+                    comando.executeUpdate();
+
+                    comando.close();
+                    conexao.close();
+
+                    audio();
+                    LBL_CARGO.setText("GOVERNADOR (a)");
+                    limpaTxtCandidato();
+                    limpaTela();
+                    txtCandidatoVisible(LBL_CARGO.getText());
+                } catch (SQLException erro) {
+                    erro.printStackTrace();
+                }
+            } else if (LBL_CARGO.getText().equals("GOVERNADOR (a)") && LBL_VOTOBRANCONULO.getText().equals("")) {
+                nCandidato = TXT_NUM1.getText() + TXT_NUM2.getText();
+                numCand = Integer.parseInt(nCandidato);
+
+                String sql = "update governador set GOV_TOTAL = (GOV_TOTAL + 1)  where GOV_NUMERO = ?";
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String user = "root";
+                String senha = "shieldcorrupted";
+
+                try {
+                    Connection conexao = DriverManager.getConnection(url, user, senha);
+
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    comando.setInt(1, numCand);
+                    comando.executeUpdate();
+
+                    comando.close();
+                    conexao.close();
+
+                    audio();
+                    LBL_CARGO.setText("PRESIDENTE (a)");
+                    limpaTxtCandidato();
+                    limpaTela();
+                    txtCandidatoVisible(LBL_CARGO.getText());
+                } catch (SQLException erro) {
+                    erro.printStackTrace();
+                }
+            } else if (LBL_CARGO.getText().equals("PRESIDENTE (a)") && LBL_VOTOBRANCONULO.getText().equals("")) {
+                nCandidato = TXT_NUM1.getText() + TXT_NUM2.getText();
+                numCand = Integer.parseInt(nCandidato);
+
+                String sql = "update presidente set PRE_TOTAL = (PRE_TOTAL + 1)  where PRE_NUMERO = ?";
+
+                String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+                String user = "root";
+                String senha = "shieldcorrupted";
+
+                try {
+                    Connection conexao = DriverManager.getConnection(url, user, senha);
+
+                    PreparedStatement comando = conexao.prepareStatement(sql);
+
+                    comando.setInt(1, numCand);
+                    comando.executeUpdate();
+
+                    comando.close();
+                    conexao.close();
+
+                    limpaTela();
+                    audio();
+                    TXT_NUM1.setVisible(false);
+                    TXT_NUM2.setVisible(false);
+                    Fim tela = new Fim();
+                    tela.setLocationRelativeTo(null);
+                    tela.show();
+                    dispose();
+                } catch (SQLException erro) {
+                    Fim tela = new Fim();
+                    tela.setLocationRelativeTo(null);
+                    tela.show();
+                    dispose();
+                    erro.printStackTrace();
+                }
             }
         }
     }//GEN-LAST:event_BTN_CONFIRMAActionPerformed
@@ -1118,71 +1145,11 @@ public class TelaVotacao extends javax.swing.JFrame {
 
     private void BTN_CORRIGEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CORRIGEActionPerformed
         LBL_NUMERO.setText("NÚMERO:");
-        LBL_FOTO.setIcon(null);
-        LBL_FOTOVICE.setIcon(null);
         LBL_VOTOBRANCONULO.setText(null);
-        TXT_NUM1.setVisible(true);
-        TXT_NUM2.setVisible(true);
-        TXT_NUM3.setVisible(true);
-        TXT_NUM4.setVisible(true);
-        TXT_NUM5.setVisible(true);
 
-        TXT_NUM1.setText(null);
-        TXT_NUM2.setText(null);
-        TXT_NUM3.setText(null);
-        TXT_NUM4.setText(null);
-        TXT_NUM5.setText(null);
-
-        LBL_NOME.setText(null);
-        LBL_NOMECANDIDATO.setText(null);
-        LBL_NOMEVICE.setText(null);
-        LBL_PARTIDO.setText(null);
-        LBL_SIGLAPARTIDO.setText(null);
-        LBL_VICE.setText(null);
-
-        if (LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")) {
-            LBL_VOTOBRANCONULO.setText(null);
-        } else if (LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")) {
-            LBL_VOTOBRANCONULO.setText(null);
-            TXT_NUM5.setVisible(false);
-        } else if (LBL_CARGO.getText().equals("SENADOR (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")) {
-            LBL_VOTOBRANCONULO.setText(null);
-            TXT_NUM4.setVisible(false);
-            TXT_NUM5.setVisible(false);
-        } else if (LBL_CARGO.getText().equals("GOVERNADOR (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")) {
-            LBL_VOTOBRANCONULO.setText(null);
-            TXT_NUM3.setVisible(false);
-            TXT_NUM4.setVisible(false);
-            TXT_NUM5.setVisible(false);
-        } else if (LBL_CARGO.getText().equals("PRESIDENTE (a)") && LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")) {
-            LBL_VOTOBRANCONULO.setText(null);
-            TXT_NUM3.setVisible(false);
-            TXT_NUM4.setVisible(false);
-            TXT_NUM5.setVisible(false);
-        }
-
-        /*if(LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")){
-            LBL_NUMERO.setText("NÚMERO:");
-            TXT_NUM1.setVisible(true);
-            TXT_NUM2.setVisible(true);
-            TXT_NUM3.setVisible(true);
-            TXT_NUM4.setVisible(true);
-            TXT_NUM5.setVisible(true);
-            LBL_VOTOBRANCONULO.setText(null);
-        }else{
-            TXT_NUM1.setText(null);
-            TXT_NUM2.setText(null);
-            TXT_NUM3.setText(null);
-            TXT_NUM4.setText(null);
-            TXT_NUM5.setText(null);
-
-            LBL_NOME.setText(null);
-            LBL_NOMECANDIDATO.setText(null);
-            LBL_NOMECANDIDATO1.setText(null);
-            LBL_PARTIDO.setText(null);
-            LBL_SIGLAPARTIDO.setText(null);
-            LBL_VICE.setText(null);
-        }*/
+        txtCandidatoVisible(LBL_CARGO.getText());
+        limpaTxtCandidato();
+        limpaTela();
     }//GEN-LAST:event_BTN_CORRIGEActionPerformed
 
     private void BTN_BRANCOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_BRANCOActionPerformed

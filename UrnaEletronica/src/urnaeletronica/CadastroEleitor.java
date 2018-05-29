@@ -21,7 +21,7 @@ public class CadastroEleitor extends javax.swing.JFrame {
 
         String nome = "";
         String nascimento = "";
-        Integer inscricao = 0;
+        String inscricao = "";
         int zona = 0;
         int secao = 0;
         String emissao = "";
@@ -112,7 +112,7 @@ public class CadastroEleitor extends javax.swing.JFrame {
         LBL_UF.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         LBL_UF.setText("UF:");
 
-        CBB_UF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
+        CBB_UF.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione UF", "AC", "AL", "AP", "AM", "BA", "CE", "DF", "ES", "GO", "MA", "MT", "MS", "MG", "PA", "PB", "PR", "PE", "PI", "RJ", "RN", "RS", "RO", "RR", "SC", "SP", "SE", "TO" }));
         CBB_UF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 CBB_UFActionPerformed(evt);
@@ -279,15 +279,12 @@ public class CadastroEleitor extends javax.swing.JFrame {
         }catch(SQLException erro){
             erro.printStackTrace();
         }
-        
-        //CBB_UF.getSelectedItem();
-        //CBB_MUNICIPIO.addItem("Ourinhos");
     }//GEN-LAST:event_CBB_UFActionPerformed
 
     private void BTN_VOTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_VOTARActionPerformed
         nome = TXT_NOME.getText();
         nascimento = TXT_NASCIMENTO.getText();
-        inscricao = Integer.parseInt(TXT_INSCRICAO.getText());
+        inscricao = TXT_INSCRICAO.getText();
         zona = Integer.parseInt(TXT_ZONA.getText());
         secao = Integer.parseInt(TXT_SECAO.getText());
         emissao = TXT_EMISSAO.getText();
@@ -307,7 +304,7 @@ public class CadastroEleitor extends javax.swing.JFrame {
 
             PreparedStatement comando = conexao.prepareStatement(sql);
 
-            comando.setInt(1, inscricao);
+            comando.setString(1, inscricao);
             comando.setString(2, nome);
             comando.setString(3, nascimento);
             comando.setInt(4, zona);
