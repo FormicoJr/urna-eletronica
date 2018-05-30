@@ -5,6 +5,13 @@
  */
 package urnaeletronica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MARCELO
@@ -27,18 +34,27 @@ public class LoginUrna extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        LBL_BRASAO = new javax.swing.JLabel();
         PNL_TELA = new javax.swing.JPanel();
+        PNL_DESCRICAO = new javax.swing.JPanel();
         LBL_EMAIL = new javax.swing.JLabel();
-        LBL_SENHA = new javax.swing.JLabel();
         TXT_EMAIL = new javax.swing.JTextField();
+        LBL_SENHA = new javax.swing.JLabel();
         PSW_SENHA = new javax.swing.JPasswordField();
         BTN_LOGIN = new javax.swing.JButton();
-        PNL_DESCRICAO = new javax.swing.JPanel();
+        LBL_BRASAO1 = new javax.swing.JLabel();
         BTN_AJUDA = new javax.swing.JButton();
+
+        LBL_BRASAO.setIcon(new javax.swing.ImageIcon(getClass().getResource("/urnaeletronica/imagens/BrasaoJusticaEleitoral.png"))); // NOI18N
+        LBL_BRASAO.setMaximumSize(new java.awt.Dimension(79, 74));
+        LBL_BRASAO.setMinimumSize(new java.awt.Dimension(79, 74));
+        LBL_BRASAO.setPreferredSize(new java.awt.Dimension(79, 74));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         PNL_TELA.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+
+        PNL_DESCRICAO.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "LOGIN", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 18))); // NOI18N
 
         LBL_EMAIL.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         LBL_EMAIL.setText("EMAIL:");
@@ -48,68 +64,90 @@ public class LoginUrna extends javax.swing.JFrame {
 
         BTN_LOGIN.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         BTN_LOGIN.setText("LOGIN");
+        BTN_LOGIN.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_LOGINActionPerformed(evt);
+            }
+        });
 
-        PNL_DESCRICAO.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
+        LBL_BRASAO1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/urnaeletronica/imagens/BrasaoJusticaEleitoral.png"))); // NOI18N
+        LBL_BRASAO1.setMaximumSize(new java.awt.Dimension(79, 74));
+        LBL_BRASAO1.setMinimumSize(new java.awt.Dimension(79, 74));
+        LBL_BRASAO1.setPreferredSize(new java.awt.Dimension(79, 74));
+
+        BTN_AJUDA.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        BTN_AJUDA.setForeground(new java.awt.Color(255, 0, 0));
+        BTN_AJUDA.setText("?");
+        BTN_AJUDA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_AJUDAActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout PNL_DESCRICAOLayout = new javax.swing.GroupLayout(PNL_DESCRICAO);
         PNL_DESCRICAO.setLayout(PNL_DESCRICAOLayout);
         PNL_DESCRICAOLayout.setHorizontalGroup(
             PNL_DESCRICAOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 362, Short.MAX_VALUE)
+            .addGroup(PNL_DESCRICAOLayout.createSequentialGroup()
+                .addGap(173, 173, 173)
+                .addComponent(BTN_LOGIN)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PNL_DESCRICAOLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(LBL_BRASAO1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(PNL_DESCRICAOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(PNL_DESCRICAOLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                        .addGroup(PNL_DESCRICAOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(LBL_SENHA)
+                            .addComponent(PSW_SENHA, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(122, 122, 122))
+                    .addGroup(PNL_DESCRICAOLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addGroup(PNL_DESCRICAOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TXT_EMAIL, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LBL_EMAIL))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PNL_DESCRICAOLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BTN_AJUDA))
         );
         PNL_DESCRICAOLayout.setVerticalGroup(
             PNL_DESCRICAOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 100, Short.MAX_VALUE)
+            .addGroup(PNL_DESCRICAOLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(PNL_DESCRICAOLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(LBL_BRASAO1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(PNL_DESCRICAOLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(LBL_EMAIL)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(TXT_EMAIL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(LBL_SENHA)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(PSW_SENHA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25)
+                .addComponent(BTN_LOGIN)
+                .addGap(3, 3, 3)
+                .addComponent(BTN_AJUDA))
         );
-
-        BTN_AJUDA.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        BTN_AJUDA.setForeground(new java.awt.Color(255, 0, 0));
-        BTN_AJUDA.setText("?");
 
         javax.swing.GroupLayout PNL_TELALayout = new javax.swing.GroupLayout(PNL_TELA);
         PNL_TELA.setLayout(PNL_TELALayout);
         PNL_TELALayout.setHorizontalGroup(
             PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PNL_TELALayout.createSequentialGroup()
-                .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PNL_TELALayout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(PNL_TELALayout.createSequentialGroup()
-                                .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(LBL_SENHA)
-                                    .addComponent(LBL_EMAIL))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(TXT_EMAIL, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(BTN_LOGIN)
-                                        .addComponent(PSW_SENHA, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(PNL_DESCRICAO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 57, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PNL_TELALayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(BTN_AJUDA)))
-                .addContainerGap())
+                .addGap(30, 30, 30)
+                .addComponent(PNL_DESCRICAO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
         PNL_TELALayout.setVerticalGroup(
             PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PNL_TELALayout.createSequentialGroup()
-                .addGap(13, 13, 13)
-                .addComponent(PNL_DESCRICAO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LBL_EMAIL)
-                    .addComponent(TXT_EMAIL, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(22, 22, 22)
-                .addGroup(PNL_TELALayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(LBL_SENHA)
-                    .addComponent(PSW_SENHA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(34, 34, 34)
-                .addComponent(BTN_LOGIN)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(BTN_AJUDA)
-                .addContainerGap())
+                .addGap(30, 30, 30)
+                .addComponent(PNL_DESCRICAO, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(30, 30, 30))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -120,11 +158,59 @@ public class LoginUrna extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(PNL_TELA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(PNL_TELA, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void BTN_AJUDAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_AJUDAActionPerformed
+        JOptionPane.showMessageDialog(null, "Digite o email e senha para iniciar a urna!");
+    }//GEN-LAST:event_BTN_AJUDAActionPerformed
+
+    private void BTN_LOGINActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_LOGINActionPerformed
+        String nome = "";
+        String email = TXT_EMAIL.getText();
+        String Senha = "";
+        String senhaTela = PSW_SENHA.getText();
+
+        String sql = "select * from fiscal_urna where FIS_LOGIN = ?";
+
+        String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+        String user = "root";
+        String senha = "shieldcorrupted";
+
+        try{
+            Connection conexao = DriverManager.getConnection(url, user, senha);
+
+            PreparedStatement comando = conexao.prepareStatement(sql);
+
+            comando.setString(1, email);
+            ResultSet busca = comando.executeQuery();
+
+            if(busca.next()==true){
+                Senha = busca.getString("FIS_SENHA");
+                if(Senha.equals(senhaTela)){
+                    nome = busca.getString("FIS_NOME");
+                    JOptionPane.showMessageDialog(null, "Acesso concedido!"
+                            + "\nBem Vindo "+nome);
+                 MenuUrna tela = new MenuUrna();
+                 tela.setVisible(true);
+                    dispose();
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "LOGIN INCORRETO!");
+                TXT_EMAIL.setText(null);
+                PSW_SENHA.setText(null);
+            }
+            comando.close();
+            conexao.close();
+
+        }catch(SQLException erro){
+            erro.printStackTrace();
+        }
+    }//GEN-LAST:event_BTN_LOGINActionPerformed
 
     /**
      * @param args the command line arguments
@@ -164,6 +250,8 @@ public class LoginUrna extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_AJUDA;
     private javax.swing.JButton BTN_LOGIN;
+    private javax.swing.JLabel LBL_BRASAO;
+    private javax.swing.JLabel LBL_BRASAO1;
     private javax.swing.JLabel LBL_EMAIL;
     private javax.swing.JLabel LBL_SENHA;
     private javax.swing.JPanel PNL_DESCRICAO;
