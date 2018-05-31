@@ -5,6 +5,13 @@
  */
 package urnaeletronica;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author MARCELO
@@ -114,7 +121,45 @@ public class InicioVotacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTN_VOTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_VOTARActionPerformed
-        
+        String inscricao = TXT_INSCRICAO.getText();
+        String retorno = "";
+        String nome = "";
+
+        String sql = "select * from eleitor where ELE_NUM = ?";
+
+        String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+        String user = "root";
+        String senha = "shieldcorrupted";
+
+        try{
+            Connection conexao = DriverManager.getConnection(url, user, senha);
+
+            PreparedStatement comando = conexao.prepareStatement(sql);
+
+            comando.setString(1, inscricao);
+            ResultSet busca = comando.executeQuery();
+
+            if(busca.next()==true){
+                retorno = busca.getString("ELE_NUM");
+                if(inscricao.equals(retorno)){
+                    nome = busca.getString("ELE_NOME");
+                    if(JOptionPane.showConfirmDialog(null,"NOME DO ELEITOR: " + nome, "ESTÁ CORRETO?", JOptionPane.YES_OPTION) == 0){
+                        TelaVotacao tela = new TelaVotacao();
+                        tela.setVisible(true);
+                        dispose();
+                    }
+                 
+                }
+            }else{
+                JOptionPane.showMessageDialog(null, "ELEITOR NÃO CADASTRADO OU NÚMERO DE INSCRIÇÃO INCORRETO!");
+                TXT_INSCRICAO.setText(null);
+            }
+            comando.close();
+            conexao.close();
+
+        }catch(SQLException erro){
+            erro.printStackTrace();
+        }
     }//GEN-LAST:event_BTN_VOTARActionPerformed
 
     private void TXT_INSCRICAOActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TXT_INSCRICAOActionPerformed

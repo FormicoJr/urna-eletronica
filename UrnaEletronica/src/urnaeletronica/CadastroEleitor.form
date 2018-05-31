@@ -23,20 +23,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
-              <Component id="PNL_ELEITOR" min="-2" pref="714" max="-2" attributes="0"/>
-              <EmptySpace pref="40" max="32767" attributes="0"/>
-          </Group>
+          <Component id="PNL_ELEITOR" alignment="1" pref="653" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-              <Component id="PNL_ELEITOR" min="-2" pref="437" max="-2" attributes="0"/>
-              <EmptySpace pref="31" max="32767" attributes="0"/>
-          </Group>
+          <Component id="PNL_ELEITOR" alignment="0" pref="395" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -61,94 +53,118 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Component id="LBL_BRASAO" min="-2" pref="87" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="LBL_NOME_MAE" min="-2" max="-2" attributes="0"/>
-                      <Component id="LBL_NOME_PAI" min="-2" max="-2" attributes="0"/>
-                      <Component id="LBL_MUNICIPIO" min="-2" max="-2" attributes="0"/>
-                      <Component id="LBL_UF" min="-2" max="-2" attributes="0"/>
-                      <Component id="LBL_EMISSAO" min="-2" max="-2" attributes="0"/>
-                      <Component id="LBL_NOME" min="-2" max="-2" attributes="0"/>
-                      <Component id="LBL_NASCIMENTO" min="-2" max="-2" attributes="0"/>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="LBL_ZONA" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                          <Component id="TXT_ZONA" min="-2" pref="47" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="LBL_SECAO" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <Component id="LBL_INSCRICAO" alignment="1" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="TXT_SECAO" min="-2" pref="55" max="-2" attributes="0"/>
-                      <Component id="TXT_NOME" min="-2" pref="320" max="-2" attributes="0"/>
-                      <Component id="TXT_NASCIMENTO" min="-2" pref="107" max="-2" attributes="0"/>
-                      <Component id="CBB_UF" min="-2" max="-2" attributes="0"/>
-                      <Component id="TXT_EMISSAO" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
-                      <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="CBB_MUNICIPIO" alignment="0" max="32767" attributes="0"/>
-                          <Component id="TXT_INSCRICAO" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="BTN_VOTAR" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                          <Component id="BTN_EDITAR" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                          <Component id="BTN_EXCLUIR" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="TXT_NOME_PAI" min="-2" pref="320" max="-2" attributes="0"/>
-                      <Component id="TXT_NOME_MAE" min="-2" pref="320" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="LBL_NOME_MAE" min="-2" max="-2" attributes="0"/>
+                              <Component id="LBL_NOME_PAI" min="-2" max="-2" attributes="0"/>
+                              <Component id="LBL_UF" min="-2" max="-2" attributes="0"/>
+                              <Component id="LBL_EMISSAO" min="-2" max="-2" attributes="0"/>
+                              <Component id="LBL_NOME" min="-2" max="-2" attributes="0"/>
+                              <Component id="LBL_NASCIMENTO" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="LBL_ZONA" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                  <Component id="TXT_ZONA" min="-2" pref="47" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="LBL_SECAO" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="LBL_INSCRICAO" min="-2" max="-2" attributes="0"/>
+                              <Component id="LBL_MUNICIPIO" alignment="1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="TXT_SECAO" min="-2" pref="55" max="-2" attributes="0"/>
+                              <Component id="TXT_NOME" min="-2" pref="320" max="-2" attributes="0"/>
+                              <Component id="TXT_NASCIMENTO" min="-2" pref="107" max="-2" attributes="0"/>
+                              <Component id="TXT_EMISSAO" alignment="0" min="-2" pref="107" max="-2" attributes="0"/>
+                              <Component id="TXT_NOME_PAI" min="-2" pref="320" max="-2" attributes="0"/>
+                              <Component id="TXT_NOME_MAE" min="-2" pref="320" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="TXT_INSCRICAO" min="-2" pref="153" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="BTN_BUSCAR" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="CBB_UF" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          <Component id="LBL_UF_BUSCA" min="-2" pref="46" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Component id="CBB_MUNICIPIO" alignment="0" min="-2" pref="153" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="LBL_MUNICIPIO_BUSCA" min="-2" pref="157" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                      </Group>
                   </Group>
-                  <EmptySpace pref="96" max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="BTN_VOTAR" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace pref="40" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
-                          <EmptySpace max="-2" attributes="0"/>
                           <Component id="LBL_BRASAO" min="-2" pref="92" max="-2" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                      <Group type="102" alignment="1" attributes="0">
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="LBL_NOME" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TXT_NOME" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LBL_INSCRICAO" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TXT_INSCRICAO" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="BTN_BUSCAR" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="LBL_NASCIMENTO" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TXT_NASCIMENTO" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="LBL_INSCRICAO" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="TXT_INSCRICAO" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LBL_NOME" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="TXT_NOME" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="LBL_SECAO" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TXT_SECAO" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="LBL_ZONA" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TXT_ZONA" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="LBL_EMISSAO" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TXT_EMISSAO" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="LBL_UF" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="CBB_UF" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="LBL_UF_BUSCA" alignment="0" min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="LBL_MUNICIPIO" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="CBB_MUNICIPIO" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                                  <Component id="LBL_MUNICIPIO" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="CBB_MUNICIPIO" alignment="3" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="LBL_MUNICIPIO_BUSCA" min="-2" pref="20" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="LBL_NOME_PAI" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TXT_NOME_PAI" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -158,11 +174,15 @@
                               <Component id="LBL_NOME_MAE" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="TXT_NOME_MAE" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="BTN_VOTAR" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="BTN_EDITAR" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="BTN_EXCLUIR" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace pref="82" max="32767" attributes="0"/>
-                  <Component id="BTN_VOTAR" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -353,11 +373,48 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="11" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="VOTAR"/>
+            <Property name="text" type="java.lang.String" value="INSERIR"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_VOTARActionPerformed"/>
           </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="BTN_EDITAR">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="EDITAR"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_EDITARActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="BTN_BUSCAR">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="BUSCAR ELEITOR"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_BUSCARActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="BTN_EXCLUIR">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Tahoma" size="11" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="EXCLUIR"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BTN_EXCLUIRActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="LBL_UF_BUSCA">
+        </Component>
+        <Component class="javax.swing.JLabel" name="LBL_MUNICIPIO_BUSCA">
         </Component>
       </SubComponents>
     </Container>

@@ -42,8 +42,6 @@ public class MenuUrna extends javax.swing.JFrame {
         MNU_VOTACAO = new javax.swing.JMenu();
         MNI_VOTAR = new javax.swing.JMenuItem();
         MNU_OPCOES = new javax.swing.JMenu();
-        MNU_RESULTADOS = new javax.swing.JMenu();
-        MNI_RELATORIO_VENCEDORES = new javax.swing.JMenuItem();
         jMenuItem1 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -143,15 +141,6 @@ public class MenuUrna extends javax.swing.JFrame {
 
         MNU_OPCOES.setText("OPÇÕES...");
 
-        MNU_RESULTADOS.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        MNU_RESULTADOS.setText("RESULTADOS");
-
-        MNI_RELATORIO_VENCEDORES.setText("CANDIDATOS VENCEDORES");
-        MNI_RELATORIO_VENCEDORES.setBorder(javax.swing.BorderFactory.createTitledBorder(""));
-        MNU_RESULTADOS.add(MNI_RELATORIO_VENCEDORES);
-
-        MNU_OPCOES.add(MNU_RESULTADOS);
-
         jMenuItem1.setText("SAIR");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -222,7 +211,9 @@ public class MenuUrna extends javax.swing.JFrame {
     }//GEN-LAST:event_MNI_CAD_ELEITORActionPerformed
 
     private void MNI_VOTARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MNI_VOTARActionPerformed
-        
+        InicioVotacao tela = new InicioVotacao();
+        tela.setVisible(true);
+        dispose();
     }//GEN-LAST:event_MNI_VOTARActionPerformed
 
     /**
@@ -269,12 +260,10 @@ public class MenuUrna extends javax.swing.JFrame {
     private javax.swing.JMenuItem MNI_DEP_FED;
     private javax.swing.JMenuItem MNI_GOVERNADOR;
     private javax.swing.JMenuItem MNI_PRESIDENTE;
-    private javax.swing.JMenuItem MNI_RELATORIO_VENCEDORES;
     private javax.swing.JMenuItem MNI_SENADOR;
     private javax.swing.JMenuItem MNI_VOTAR;
     private javax.swing.JMenu MNU_CAD_CANDIDATOS;
     private javax.swing.JMenu MNU_OPCOES;
-    private javax.swing.JMenu MNU_RESULTADOS;
     private javax.swing.JMenu MNU_VOTACAO;
     private javax.swing.JPanel PNL_MENU;
     private javax.swing.JMenuItem jMenuItem1;

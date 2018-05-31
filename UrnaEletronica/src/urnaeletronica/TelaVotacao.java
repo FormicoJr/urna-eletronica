@@ -300,12 +300,12 @@ public class TelaVotacao extends javax.swing.JFrame {
     }
 
     public void limpaTela() {
-        LBL_NOME.setText("");
-        LBL_NOMECANDIDATO.setText("");
-        LBL_PARTIDO.setText("");
-        LBL_SIGLAPARTIDO.setText("");
-        LBL_VICE.setText("");
-        LBL_NOMEVICE.setText("");
+        LBL_NOME.setText(null);
+        LBL_NOMECANDIDATO.setText(null);
+        LBL_PARTIDO.setText(null);
+        LBL_SIGLAPARTIDO.setText(null);
+        LBL_VICE.setText(null);
+        LBL_NOMEVICE.setText(null);
         LBL_FOTO.setIcon(null);
         LBL_FOTOVICE.setIcon(null);
     }
@@ -345,11 +345,11 @@ public class TelaVotacao extends javax.swing.JFrame {
     }
 
     public void limpaTxtCandidato() {
-        TXT_NUM1.setText("");
-        TXT_NUM2.setText("");
-        TXT_NUM3.setText("");
-        TXT_NUM4.setText("");
-        TXT_NUM5.setText("");
+        TXT_NUM1.setText(null);
+        TXT_NUM2.setText(null);
+        TXT_NUM3.setText(null);
+        TXT_NUM4.setText(null);
+        TXT_NUM5.setText(null);
     }
 
     public TelaVotacao() {
@@ -881,60 +881,6 @@ public class TelaVotacao extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void BTN_CONFIRMAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CONFIRMAActionPerformed
-        if (LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)") && TXT_NUM5.getText().equals("")) {
-            LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
-        } else if (LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)") && TXT_NUM4.getText().equals("")) {
-            LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
-        } else if (LBL_CARGO.getText().equals("SENADOR (a)") && TXT_NUM3.getText().equals("")) {
-            LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
-        } else if (LBL_CARGO.getText().equals("GOVERNADOR (a)") && TXT_NUM2.getText().equals("")) {
-            LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
-        } else if (LBL_CARGO.getText().equals("PRESIDENTE (a)") && TXT_NUM2.getText().equals("")) {
-            LBL_VOTOBRANCONULO.setText("NÚMERO ERRADO");
-        }
-
-        //CONDIÇÕES PARA VOTO NULO OU EM BRANCO
-        if (LBL_VOTOBRANCONULO.getText().equals("NÚMERO ERRADO") || LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")) {
-            if (LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)")) {
-                LBL_NUMERO.setText("NÚMERO:");
-                LBL_VOTOBRANCONULO.setText("");
-                LBL_CARGO.setText("DEPUTADO FEDERAL (a)");
-                limpaTxtCandidato();
-                limpaTela();
-                audio();
-                txtCandidatoVisible(LBL_CARGO.getText());
-            } else if (LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)")) {
-                LBL_NUMERO.setText("NÚMERO:");
-                LBL_VOTOBRANCONULO.setText("");
-                LBL_CARGO.setText("SENADOR (a)");
-                limpaTxtCandidato();
-                limpaTela();
-                audio();
-                txtCandidatoVisible(LBL_CARGO.getText());
-            } else if (LBL_CARGO.getText().equals("SENADOR (a)")) {
-                LBL_NUMERO.setText("NÚMERO:");
-                LBL_VOTOBRANCONULO.setText("");
-                LBL_CARGO.setText("GOVERNADOR (a)");
-                limpaTxtCandidato();
-                limpaTela();
-                audio();
-                txtCandidatoVisible(LBL_CARGO.getText());
-            } else if (LBL_CARGO.getText().equals("GOVERNADOR (a)")) {
-                LBL_NUMERO.setText("NÚMERO:");
-                LBL_VOTOBRANCONULO.setText("");
-                LBL_CARGO.setText("PRESIDENTE (a)");
-                limpaTxtCandidato();
-                limpaTela();
-                audio();
-                txtCandidatoVisible(LBL_CARGO.getText());
-            } else if (LBL_CARGO.getText().equals("PRESIDENTE (a)")) {
-                audio();
-                Fim tela = new Fim();
-                tela.setLocationRelativeTo(null);
-                tela.show();
-                dispose();
-            }
-
             if (LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)") && LBL_VOTOBRANCONULO.getText().equals("")) {
                 nCandidato = TXT_NUM1.getText() + TXT_NUM2.getText() + TXT_NUM3.getText()
                         + TXT_NUM4.getText() + TXT_NUM5.getText();
@@ -1090,6 +1036,47 @@ public class TelaVotacao extends javax.swing.JFrame {
                     dispose();
                     erro.printStackTrace();
                 }
+            }
+            //CONDIÇÕES PARA VOTO NULO OU EM BRANCO
+        if (LBL_VOTOBRANCONULO.getText().equals("NÚMERO ERRADO") || LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")) {
+            if (LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)")) {
+                LBL_NUMERO.setText("NÚMERO:");
+                LBL_VOTOBRANCONULO.setText(null);
+                LBL_CARGO.setText("DEPUTADO FEDERAL (a)");
+                limpaTxtCandidato();
+                limpaTela();
+                audio();
+                txtCandidatoVisible(LBL_CARGO.getText());
+            } else if (LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)")) {
+                LBL_NUMERO.setText("NÚMERO:");
+                LBL_VOTOBRANCONULO.setText(null);
+                LBL_CARGO.setText("SENADOR (a)");
+                limpaTxtCandidato();
+                limpaTela();
+                audio();
+                txtCandidatoVisible(LBL_CARGO.getText());
+            } else if (LBL_CARGO.getText().equals("SENADOR (a)")) {
+                LBL_NUMERO.setText("NÚMERO:");
+                LBL_VOTOBRANCONULO.setText(null);
+                LBL_CARGO.setText("GOVERNADOR (a)");
+                limpaTxtCandidato();
+                limpaTela();
+                audio();
+                txtCandidatoVisible(LBL_CARGO.getText());
+            } else if (LBL_CARGO.getText().equals("GOVERNADOR (a)")) {
+                LBL_NUMERO.setText("NÚMERO:");
+                LBL_VOTOBRANCONULO.setText(null);
+                LBL_CARGO.setText("PRESIDENTE (a)");
+                limpaTxtCandidato();
+                limpaTela();
+                audio();
+                txtCandidatoVisible(LBL_CARGO.getText());
+            } else if (LBL_CARGO.getText().equals("PRESIDENTE (a)")) {
+                audio();
+                Fim tela = new Fim();
+                tela.setLocationRelativeTo(null);
+                tela.show();
+                dispose();
             }
         }
     }//GEN-LAST:event_BTN_CONFIRMAActionPerformed

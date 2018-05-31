@@ -66,6 +66,11 @@ public class CadastroEleitor extends javax.swing.JFrame {
         LBL_NOME_MAE = new javax.swing.JLabel();
         TXT_NOME_MAE = new javax.swing.JTextField();
         BTN_VOTAR = new javax.swing.JButton();
+        BTN_EDITAR = new javax.swing.JButton();
+        BTN_BUSCAR = new javax.swing.JButton();
+        BTN_EXCLUIR = new javax.swing.JButton();
+        LBL_UF_BUSCA = new javax.swing.JLabel();
+        LBL_MUNICIPIO_BUSCA = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -129,10 +134,34 @@ public class CadastroEleitor extends javax.swing.JFrame {
         LBL_NOME_MAE.setText("NOME DA MÃE:");
 
         BTN_VOTAR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        BTN_VOTAR.setText("VOTAR");
+        BTN_VOTAR.setText("INSERIR");
         BTN_VOTAR.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 BTN_VOTARActionPerformed(evt);
+            }
+        });
+
+        BTN_EDITAR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BTN_EDITAR.setText("EDITAR");
+        BTN_EDITAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_EDITARActionPerformed(evt);
+            }
+        });
+
+        BTN_BUSCAR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BTN_BUSCAR.setText("BUSCAR ELEITOR");
+        BTN_BUSCAR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_BUSCARActionPerformed(evt);
+            }
+        });
+
+        BTN_EXCLUIR.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        BTN_EXCLUIR.setText("EXCLUIR");
+        BTN_EXCLUIR.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BTN_EXCLUIRActionPerformed(evt);
             }
         });
 
@@ -143,106 +172,121 @@ public class CadastroEleitor extends javax.swing.JFrame {
             .addGroup(PNL_ELEITORLayout.createSequentialGroup()
                 .addGap(18, 18, 18)
                 .addComponent(LBL_BRASAO, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
-                .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(LBL_NOME_MAE)
-                    .addComponent(LBL_NOME_PAI)
-                    .addComponent(LBL_MUNICIPIO)
-                    .addComponent(LBL_UF)
-                    .addComponent(LBL_EMISSAO)
-                    .addComponent(LBL_NOME)
-                    .addComponent(LBL_NASCIMENTO)
-                    .addGroup(PNL_ELEITORLayout.createSequentialGroup()
-                        .addComponent(LBL_ZONA)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(TXT_ZONA, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(LBL_SECAO))
-                    .addComponent(LBL_INSCRICAO))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(28, 28, 28)
                 .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(TXT_SECAO, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TXT_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TXT_NASCIMENTO, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(CBB_UF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TXT_EMISSAO, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(CBB_MUNICIPIO, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(TXT_INSCRICAO, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(TXT_NOME_PAI, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(TXT_NOME_MAE, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(96, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PNL_ELEITORLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(BTN_VOTAR)
-                .addContainerGap())
+                    .addGroup(PNL_ELEITORLayout.createSequentialGroup()
+                        .addComponent(BTN_VOTAR)
+                        .addGap(70, 70, 70)
+                        .addComponent(BTN_EDITAR)
+                        .addGap(70, 70, 70)
+                        .addComponent(BTN_EXCLUIR))
+                    .addGroup(PNL_ELEITORLayout.createSequentialGroup()
+                        .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(LBL_NOME_MAE)
+                            .addComponent(LBL_NOME_PAI)
+                            .addComponent(LBL_UF)
+                            .addComponent(LBL_EMISSAO)
+                            .addComponent(LBL_NOME)
+                            .addComponent(LBL_NASCIMENTO)
+                            .addGroup(PNL_ELEITORLayout.createSequentialGroup()
+                                .addComponent(LBL_ZONA)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(TXT_ZONA, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(LBL_SECAO))
+                            .addComponent(LBL_INSCRICAO)
+                            .addComponent(LBL_MUNICIPIO))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(TXT_SECAO, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TXT_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TXT_NASCIMENTO, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TXT_EMISSAO, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TXT_NOME_PAI, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(TXT_NOME_MAE, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(PNL_ELEITORLayout.createSequentialGroup()
+                                .addComponent(TXT_INSCRICAO, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(BTN_BUSCAR))
+                            .addGroup(PNL_ELEITORLayout.createSequentialGroup()
+                                .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(PNL_ELEITORLayout.createSequentialGroup()
+                                        .addComponent(CBB_UF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(LBL_UF_BUSCA, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(CBB_MUNICIPIO, javax.swing.GroupLayout.PREFERRED_SIZE, 153, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(LBL_MUNICIPIO_BUSCA, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(40, Short.MAX_VALUE))
         );
         PNL_ELEITORLayout.setVerticalGroup(
             PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PNL_ELEITORLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(PNL_ELEITORLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(LBL_BRASAO, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(PNL_ELEITORLayout.createSequentialGroup()
-                        .addGap(21, 21, 21)
+                        .addComponent(LBL_BRASAO, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, PNL_ELEITORLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LBL_NOME)
-                            .addComponent(TXT_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(LBL_INSCRICAO)
+                            .addComponent(TXT_INSCRICAO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(BTN_BUSCAR))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LBL_NASCIMENTO)
                             .addComponent(TXT_NASCIMENTO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LBL_INSCRICAO)
-                            .addComponent(TXT_INSCRICAO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(LBL_NOME)
+                            .addComponent(TXT_NOME, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LBL_SECAO)
                             .addComponent(TXT_SECAO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(LBL_ZONA)
                             .addComponent(TXT_ZONA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LBL_EMISSAO)
                             .addComponent(TXT_EMISSAO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LBL_UF)
-                            .addComponent(CBB_UF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(LBL_MUNICIPIO)
-                            .addComponent(CBB_MUNICIPIO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(CBB_UF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(LBL_UF_BUSCA, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(LBL_MUNICIPIO)
+                                .addComponent(CBB_MUNICIPIO, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(LBL_MUNICIPIO_BUSCA, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LBL_NOME_PAI)
                             .addComponent(TXT_NOME_PAI, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(LBL_NOME_MAE)
-                            .addComponent(TXT_NOME_MAE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 82, Short.MAX_VALUE)
-                .addComponent(BTN_VOTAR)
-                .addContainerGap())
+                            .addComponent(TXT_NOME_MAE, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(65, 65, 65)
+                        .addGroup(PNL_ELEITORLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(BTN_VOTAR)
+                            .addComponent(BTN_EDITAR)
+                            .addComponent(BTN_EXCLUIR))
+                        .addGap(28, 28, 28))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addComponent(PNL_ELEITOR, javax.swing.GroupLayout.PREFERRED_SIZE, 714, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
+            .addComponent(PNL_ELEITOR, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(19, 19, 19)
-                .addComponent(PNL_ELEITOR, javax.swing.GroupLayout.PREFERRED_SIZE, 437, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(31, Short.MAX_VALUE))
+            .addComponent(PNL_ELEITOR, javax.swing.GroupLayout.DEFAULT_SIZE, 395, Short.MAX_VALUE)
         );
 
         pack();
@@ -253,7 +297,7 @@ public class CadastroEleitor extends javax.swing.JFrame {
         CBB_MUNICIPIO.removeAllItems();
         uf = (String) CBB_UF.getSelectedItem();
         
-        String sql = "select * from municipio where MUN_UF_SIGLA = ?";
+        String sql = "select * from municipio where Uf = ?";
 
         String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
         String user = "root";
@@ -268,7 +312,7 @@ public class CadastroEleitor extends javax.swing.JFrame {
             ResultSet busca = comando.executeQuery();
 
             while(busca.next()==true){
-                municipio = busca.getString("MUN_CIDADE");
+                municipio = busca.getString("Nome");
                 CBB_MUNICIPIO.addItem(municipio);
             }
 
@@ -328,6 +372,159 @@ public class CadastroEleitor extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BTN_VOTARActionPerformed
 
+    private void BTN_EDITARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_EDITARActionPerformed
+        nome = TXT_NOME.getText();
+        nascimento = TXT_NASCIMENTO.getText();
+        inscricao = TXT_INSCRICAO.getText();
+        zona = Integer.parseInt(TXT_ZONA.getText());
+        secao = Integer.parseInt(TXT_SECAO.getText());
+        emissao = TXT_EMISSAO.getText();
+        uf = (String) CBB_UF.getSelectedItem();
+        municipio = (String) CBB_MUNICIPIO.getSelectedItem();
+        pai = TXT_NOME_PAI.getText();
+        mae = TXT_NOME_MAE.getText();
+
+        String sql = "update eleitor set ELE_NUM = ?, ELE_NOME = ?, ELE_DTNASCIMENTO = ?, ELE_ZONA = ?, ELE_SECAO = ?,"
+                + " ELE_DTEMISSAO = ?, ELE_MUNICIPIO = ?, ELE_UF = ?, ELE_NOMEPAI = ?, ELE_NOMEMAE = ? where ELE_NUM = ?";
+
+        String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+        String user = "root";
+        String senha = "shieldcorrupted";
+
+        try{
+            Connection conexao = DriverManager.getConnection(url, user, senha);
+
+            PreparedStatement comando = conexao.prepareStatement(sql);
+
+            comando.setString(1, inscricao);
+            comando.setString(2, nome);
+            comando.setString(3, nascimento);
+            comando.setInt(4, zona);
+            comando.setInt(5, secao);
+            comando.setString(6, emissao);
+            comando.setString(7, municipio);
+            comando.setString(8, uf);
+            comando.setString(9, pai);
+            comando.setString(10, mae);
+            comando.setString(11, inscricao);
+            comando.executeUpdate();
+
+            comando.close();
+            conexao.close();
+
+            JOptionPane.showMessageDialog(null, "DADOS ATUALIZADOS!");
+
+            TXT_INSCRICAO.setText("");
+            TXT_NOME.setText("");
+            TXT_NASCIMENTO.setText("");
+            TXT_ZONA.setText("");
+            TXT_SECAO.setText("");
+            TXT_EMISSAO.setText("");
+            TXT_NOME_PAI.setText("");
+            TXT_NOME_MAE.setText("");
+        }catch(SQLException erro){
+            JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL EDITAR OS DADOS DO CANDIDATO!"
+                + "\nTENTE NOVAMENTE!");
+            erro.printStackTrace();
+        }
+    }//GEN-LAST:event_BTN_EDITARActionPerformed
+
+    private void BTN_BUSCARActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_BUSCARActionPerformed
+        TXT_NOME.setText("");
+        TXT_NASCIMENTO.setText("");
+        TXT_ZONA.setText("");
+        TXT_SECAO.setText("");
+        TXT_EMISSAO.setText("");
+        TXT_NOME_PAI.setText("");
+        TXT_NOME_MAE.setText("");
+
+        inscricao = TXT_INSCRICAO.getText();
+
+        String sql = "select * from eleitor where ELE_NUM = ?";
+
+        String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+        String user = "root";
+        String senha = "shieldcorrupted";
+
+        try{
+            Connection conexao = DriverManager.getConnection(url, user, senha);
+
+            PreparedStatement comando = conexao.prepareStatement(sql);
+
+            comando.setString(1, inscricao);
+            ResultSet busca = comando.executeQuery();
+
+            if(busca.next()==true){
+                nome = busca.getString("ELE_NOME");
+                nascimento = busca.getString("ELE_DTNASCIMENTO");
+                zona = busca.getInt("ELE_ZONA");
+                secao = busca.getInt("ELE_SECAO");
+                emissao = busca.getString("ELE_DTEMISSAO");
+                uf = busca.getString("ELE_UF");
+                municipio = busca.getString("ELE_MUNICIPIO");
+                pai = busca.getString("ELE_NOMEPAI");
+                mae = busca.getString("ELE_NOMEMAE");
+
+                TXT_INSCRICAO.setText(inscricao);
+                TXT_NOME.setText(nome);
+                TXT_NASCIMENTO.setText(nascimento);
+                TXT_ZONA.setText(Integer.toString(zona));
+                TXT_SECAO.setText(Integer.toString(secao));
+                TXT_EMISSAO.setText(emissao);
+                TXT_NOME_PAI.setText(pai);
+                TXT_NOME_MAE.setText(mae);
+                LBL_UF_BUSCA.setText(uf);
+                LBL_MUNICIPIO_BUSCA.setText(municipio);
+            }else{
+                JOptionPane.showMessageDialog(null, "ELEITOR NÃO ENCONTRADO!"
+                    + "\nVerifique se o NÚMERO DE INSCRIÇÃO ESTÁ CORRETO e busque novamente!");
+                TXT_INSCRICAO.setText(null);
+            }
+            comando.close();
+            conexao.close();
+
+        }catch(SQLException erro){
+            erro.printStackTrace();
+        }
+    }//GEN-LAST:event_BTN_BUSCARActionPerformed
+
+    private void BTN_EXCLUIRActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_EXCLUIRActionPerformed
+        inscricao = TXT_INSCRICAO.getText();
+
+        String sql = "delete from eleitor where ELE_NUM = ?";
+
+        String url = "jdbc:mysql://127.0.0.1:3306/eleicao";
+        String user = "root";
+        String senha = "shieldcorrupted";
+
+        try{
+            Connection conexao = DriverManager.getConnection(url, user, senha);
+
+            PreparedStatement comando = conexao.prepareStatement(sql);
+
+            comando.setString(1, inscricao);
+            comando.executeUpdate();
+
+            comando.close();
+            conexao.close();
+
+            JOptionPane.showMessageDialog(null, "ELEITOR EXCLUÍDO!");
+
+            TXT_INSCRICAO.setText("");
+            TXT_NOME.setText("");
+            TXT_NASCIMENTO.setText("");
+            TXT_ZONA.setText("");
+            TXT_SECAO.setText("");
+            TXT_EMISSAO.setText("");
+            TXT_NOME_PAI.setText("");
+            TXT_NOME_MAE.setText("");
+        }catch(SQLException erro){
+            JOptionPane.showMessageDialog(null, "NÃO FOI POSSÍVEL EXCLUIR O ELEITOR OU NÃO ESTÁ CADASTRADO!"
+                + "\nTENTE NOVAMENTE!");
+            erro.printStackTrace();
+        }
+    }//GEN-LAST:event_BTN_EXCLUIRActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -364,6 +561,9 @@ public class CadastroEleitor extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTN_BUSCAR;
+    private javax.swing.JButton BTN_EDITAR;
+    private javax.swing.JButton BTN_EXCLUIR;
     private javax.swing.JButton BTN_VOTAR;
     private javax.swing.JComboBox<String> CBB_MUNICIPIO;
     private javax.swing.JComboBox<String> CBB_UF;
@@ -371,12 +571,14 @@ public class CadastroEleitor extends javax.swing.JFrame {
     private javax.swing.JLabel LBL_EMISSAO;
     private javax.swing.JLabel LBL_INSCRICAO;
     private javax.swing.JLabel LBL_MUNICIPIO;
+    private javax.swing.JLabel LBL_MUNICIPIO_BUSCA;
     private javax.swing.JLabel LBL_NASCIMENTO;
     private javax.swing.JLabel LBL_NOME;
     private javax.swing.JLabel LBL_NOME_MAE;
     private javax.swing.JLabel LBL_NOME_PAI;
     private javax.swing.JLabel LBL_SECAO;
     private javax.swing.JLabel LBL_UF;
+    private javax.swing.JLabel LBL_UF_BUSCA;
     private javax.swing.JLabel LBL_ZONA;
     private javax.swing.JPanel PNL_ELEITOR;
     private javax.swing.JFormattedTextField TXT_EMISSAO;
