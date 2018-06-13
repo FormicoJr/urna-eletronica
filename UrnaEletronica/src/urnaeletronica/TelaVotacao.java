@@ -300,12 +300,12 @@ public class TelaVotacao extends javax.swing.JFrame {
     }
 
     public void limpaTela() {
-        LBL_NOME.setText(null);
-        LBL_NOMECANDIDATO.setText(null);
-        LBL_PARTIDO.setText(null);
-        LBL_SIGLAPARTIDO.setText(null);
-        LBL_VICE.setText(null);
-        LBL_NOMEVICE.setText(null);
+        LBL_NOME.setText("");
+        LBL_NOMECANDIDATO.setText("");
+        LBL_PARTIDO.setText("");
+        LBL_SIGLAPARTIDO.setText("");
+        LBL_VICE.setText("");
+        LBL_NOMEVICE.setText("");
         LBL_FOTO.setIcon(null);
         LBL_FOTOVICE.setIcon(null);
     }
@@ -345,11 +345,11 @@ public class TelaVotacao extends javax.swing.JFrame {
     }
 
     public void limpaTxtCandidato() {
-        TXT_NUM1.setText(null);
-        TXT_NUM2.setText(null);
-        TXT_NUM3.setText(null);
-        TXT_NUM4.setText(null);
-        TXT_NUM5.setText(null);
+        TXT_NUM1.setText("");
+        TXT_NUM2.setText("");
+        TXT_NUM3.setText("");
+        TXT_NUM4.setText("");
+        TXT_NUM5.setText("");
     }
 
     public TelaVotacao() {
@@ -1041,7 +1041,7 @@ public class TelaVotacao extends javax.swing.JFrame {
         if (LBL_VOTOBRANCONULO.getText().equals("NÚMERO ERRADO") || LBL_VOTOBRANCONULO.getText().equals("VOTO EM BRANCO")) {
             if (LBL_CARGO.getText().equals("DEPUTADO ESTADUAL (a)")) {
                 LBL_NUMERO.setText("NÚMERO:");
-                LBL_VOTOBRANCONULO.setText(null);
+                LBL_VOTOBRANCONULO.setText("");
                 LBL_CARGO.setText("DEPUTADO FEDERAL (a)");
                 limpaTxtCandidato();
                 limpaTela();
@@ -1049,7 +1049,7 @@ public class TelaVotacao extends javax.swing.JFrame {
                 txtCandidatoVisible(LBL_CARGO.getText());
             } else if (LBL_CARGO.getText().equals("DEPUTADO FEDERAL (a)")) {
                 LBL_NUMERO.setText("NÚMERO:");
-                LBL_VOTOBRANCONULO.setText(null);
+                LBL_VOTOBRANCONULO.setText("");
                 LBL_CARGO.setText("SENADOR (a)");
                 limpaTxtCandidato();
                 limpaTela();
@@ -1057,7 +1057,7 @@ public class TelaVotacao extends javax.swing.JFrame {
                 txtCandidatoVisible(LBL_CARGO.getText());
             } else if (LBL_CARGO.getText().equals("SENADOR (a)")) {
                 LBL_NUMERO.setText("NÚMERO:");
-                LBL_VOTOBRANCONULO.setText(null);
+                LBL_VOTOBRANCONULO.setText("");
                 LBL_CARGO.setText("GOVERNADOR (a)");
                 limpaTxtCandidato();
                 limpaTela();
@@ -1065,7 +1065,7 @@ public class TelaVotacao extends javax.swing.JFrame {
                 txtCandidatoVisible(LBL_CARGO.getText());
             } else if (LBL_CARGO.getText().equals("GOVERNADOR (a)")) {
                 LBL_NUMERO.setText("NÚMERO:");
-                LBL_VOTOBRANCONULO.setText(null);
+                LBL_VOTOBRANCONULO.setText("");
                 LBL_CARGO.setText("PRESIDENTE (a)");
                 limpaTxtCandidato();
                 limpaTela();
@@ -1133,7 +1133,7 @@ public class TelaVotacao extends javax.swing.JFrame {
 
     private void BTN_CORRIGEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BTN_CORRIGEActionPerformed
         LBL_NUMERO.setText("NÚMERO:");
-        LBL_VOTOBRANCONULO.setText(null);
+        LBL_VOTOBRANCONULO.setText("");
 
         txtCandidatoVisible(LBL_CARGO.getText());
         limpaTxtCandidato();
@@ -1149,7 +1149,7 @@ public class TelaVotacao extends javax.swing.JFrame {
         TXT_NUM4.setVisible(false);
         TXT_NUM5.setVisible(false);
 
-        LBL_NUMERO.setText(null);
+        LBL_NUMERO.setText("");
         limpaTela();
         LBL_VOTOBRANCONULO.setText("VOTO EM BRANCO");
     }//GEN-LAST:event_BTN_BRANCOActionPerformed
